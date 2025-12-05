@@ -1,13 +1,9 @@
 package model
 
-import (
-	"time"
-
-	"github.com/google/uuid"
-)
+import "time"
 
 type Paste struct {
-	ID            uuid.UUID  `json:"id"`
+	ID            string     `json:"id"`
 	Title         string     `json:"title"`
 	Content       string     `json:"content"`
 	Language      string     `json:"language"`
@@ -15,7 +11,7 @@ type Paste struct {
 	BurnAfterRead bool       `json:"burnAfterRead"`
 	ExpiresAt     *time.Time `json:"expiresAt"`
 	CreatedAt     time.Time  `json:"createdAt"`
-	Views         int        `json:"views"`
-	UserID        *uuid.UUID `json:"userId"`
+	Views         time.Time  `json:"views"`
+	UserID        *string    `json:"userId"`
 	IsPublic      bool       `json:"isPublic"`
 }
