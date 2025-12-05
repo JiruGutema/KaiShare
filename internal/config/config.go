@@ -1,4 +1,4 @@
-//Package config contains a configuration loader for environment variables
+// Package config contains a configuration loader for environment variables
 package config
 
 import (
@@ -14,6 +14,7 @@ type Config struct {
 	DBPassword string
 	DBName     string
 	JWTSecret  string
+	RefreshSecret string
 }
 
 // LoadConfig reads environment variables and returns a Config struct
@@ -23,9 +24,10 @@ func LoadConfig() *Config {
 		DBHost:     getEnv("DB_HOST", "localhost"),
 		DBPort:     getEnv("DB_PORT", "5432"),
 		DBUser:     getEnv("DB_USER", "postgres"),
-		DBPassword: getEnv("DB_PASSWORD", "password"),
-		DBName:     getEnv("DB_NAME", "paste_store"),
+		DBPassword: getEnv("DB_PASSWORD", "1441"),
+		DBName:     getEnv("DB_NAME", "gopastebin"),
 		JWTSecret:  getEnv("JWT_SECRET", "supersecret"),
+		RefreshSecret: getEnv("REFRESH_SECRET", "superrefreshsecret"),
 	}
 }
 
@@ -38,8 +40,7 @@ func getEnv(key string, defaultValue string) string {
 	return value
 }
 
-// PostgresDSN Helper to construct a PostgreSQL
-func (c *Config) PostgresDSN() string {
+func ConstructDBString(c *Config) string {
 	return fmt.Sprintf(
 		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
 		c.DBUser, c.DBPassword, c.DBHost, c.DBPort, c.DBName,

@@ -1,17 +1,27 @@
 package main
 
 import (
+	"fmt"
 	"log"
-	"gopastbin/internal/server"
+
+	"github.com/jirugutema/gopastebin/internal/config"
+	routes "github.com/jirugutema/gopastebin/internal/router"
 	"github.com/joho/godotenv"
 )
 
 func main() {
-	srv := server.NewServer("3000")
-	if err := godotenv.Load(); err != nil {
-		log.Fatal(err)
+	fmt.Println("Main thread started!")
+	config.ConnectDatabase()
+
+	e := godotenv.Load()
+	if e != nil {
+		log.Fatal("Error loading .env file")
 	}
-	if err := srv.Start(); err != nil {
-		log.Fatal(err)
+
+	c := config.LoadConfig()
+	r := routes.Routes()
+	err := r.Run(fmt.Sprintf(":%s", c.Port))
+	if err != nil {
+		fmt.Println("Error starting server:", err)
 	}
 }
