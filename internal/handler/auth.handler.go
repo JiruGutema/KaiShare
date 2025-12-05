@@ -16,7 +16,7 @@ func LoginHandler(ctx *gin.Context) {
 	err := ctx.BindJSON(&user)
 	fmt.Println(user)
 	if err != nil {
-		ctx.JSON(400, "Error getting user information")
+		ctx.JSON(400, gin.H{"error": "Error getting user information"})
 		return
 	}
 	loginResponse, accessToken, refreshToken, err := service.LoginService(user)
@@ -31,7 +31,7 @@ func LoginHandler(ctx *gin.Context) {
 		return
 	}
 	if err != nil {
-		ctx.JSON(401, "Login failed")
+		ctx.JSON(401, gin.H{"error": "login failed"})
 		return
 	}
 
@@ -47,7 +47,7 @@ func RegisterHandler(ctx *gin.Context) {
 
 	err := ctx.BindJSON(&user)
 	if err != nil {
-		ctx.JSON(400, "Error getting user information")
+		ctx.JSON(400, gin.H{"error": "Error getting user information"})
 		return
 	}
 	resp, accessToken, refreshToken, err := service.RegisterService(user)
