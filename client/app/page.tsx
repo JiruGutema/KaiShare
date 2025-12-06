@@ -27,19 +27,15 @@ export default function HomePage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-none border border-border bg-card p-4 text-center">
-                  <FileCode className="h-6 w-6 text-primary mx-auto mb-2" />
                   <p className="text-xs text-muted-foreground">25+ Languages</p>
                 </div>
                 <div className="rounded-none border border-border bg-card p-4 text-center">
-                  <Lock className="h-6 w-6 text-primary mx-auto mb-2" />
                   <p className="text-xs text-muted-foreground">Password Lock</p>
                 </div>
                 <div className="rounded-none border border-border bg-card p-4 text-center">
-                  <Flame className="h-6 w-6 text-destructive mx-auto mb-2" />
                   <p className="text-xs text-muted-foreground">Burn After Read</p>
                 </div>
                 <div className="rounded-none border border-border bg-card p-4 text-center">
-                  <Users className="h-6 w-6 text-primary mx-auto mb-2" />
                   <p className="text-xs text-muted-foreground">User Accounts</p>
                 </div>
               </div>

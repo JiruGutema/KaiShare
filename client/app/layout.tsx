@@ -1,23 +1,25 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Pastera - Share Code & Text Securely",
-  description: "A modern pastebin with syntax highlighting, password protection, burn after read.",
+  title: "Pastera  Share Code & Text Securely",
+  description:
+    "A modern pastebin with syntax highlighting, password protection, burn after read.",
   authors: [{ name: "Jiru Gutema", url: "https://jirugutema.vercel.app" }],
   icons: "/logo.png",
-}
+};
 
 export const viewport: Viewport = {
   themeColor: "#1a1a2e",
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -38,7 +40,8 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <Analytics />
+        <Toaster position="bottom-right" />
       </body>
     </html>
-  )
+  );
 }

@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ import {
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { mutate } from "swr";
 import { apiFetch } from "@/lib/api";
-import { ApiBaseUrl } from "@/lib/utils";
+import { ApiBaseUrl, IsLoggedIn } from "@/lib/utils";
 
 interface AuthFormProps {
   mode: "login" | "register";
@@ -29,12 +29,21 @@ export function AuthForm({ mode }: AuthFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
   });
+
+  useEffect(() => {
+    setIsAuthenticated(IsLoggedIn());
+  }, []);
+
+  if (isAuthenticated) {
+    router.push("/dashboard");
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +70,7 @@ export function AuthForm({ mode }: AuthFormProps) {
 
       // Refresh session data
       mutate(`${ApiBaseUrl()}/api/users/mine`);
-      router.push("/dashboard");
+      router.push("/");
     } catch {
       setError("Failed to connect. Please try again.");
     } finally {
@@ -149,7 +158,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             </div>
           </div>
 
-          {error && <p className="text-sm text-destructive">{error}</p>}
+          {error && <p className="text-sm text-red-400">{error}</p>}
         </CardContent>
         <CardFooter className="flex flex-col gap-4 mt-4">
           <Button type="submit" className="w-full" disabled={loading}>

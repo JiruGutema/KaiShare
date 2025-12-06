@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/jiren/dev/Go/KaiShare/client/node_modules/.pnpm/highlight.js%4011.11.1/node_modules/highlight.js/es/index.js"],"sourcesContent":["// https://nodejs.org/api/packages.html#packages_writing_dual_packages_while_avoiding_or_minimizing_hazards\nimport HighlightJS from '../lib/index.js';\nexport { HighlightJS };\nexport default HighlightJS;\n"],"names":[],"mappings":"AAAA,2GAA2G;;;;;AAC3G;;;uCAEe,2NAAW","ignoreList":[0]}}]
+}

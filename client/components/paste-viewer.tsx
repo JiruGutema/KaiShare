@@ -124,6 +124,7 @@ const handleDownload = () => {
       }
       else {
         setDeleting(false);
+        setShowLogoutDialog(false)
         toast.error("You are not authorized to delete this paste.");
       }
     } catch {

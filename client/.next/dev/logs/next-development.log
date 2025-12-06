@@ -1,0 +1,868 @@
+[00:00:00.538] Server  LOG      ✓ Ready in 347ms
+[00:01:31.738] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:31.738] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:31.738] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765048667936}
+[00:54:49.129] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:54:49.130] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:54:49.130] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051865326}
+[00:55:05.870] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:05.870] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:55:05.871] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051882068}
+[00:55:08.235] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051884428}
+[00:55:16.717] Browser ERROR   Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://react.dev/link/setstate-in-render Router DashboardContent DashboardContent
+[00:55:16.717] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051892903}
+[00:55:16.845] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051893034}
+[00:55:19.964] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="login/page...">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <Header>
+                  <main className="flex-1 fle...">
+                    <AuthForm mode="login">
+                      <Card className="w-full max...">
+                        <div data-slot="card" className="text-card-...">
+                          <CardHeader>
+                          <form onSubmit={function handleSubmit}>
+                            <CardContent className="space-y-4">
+                              <div data-slot="card-content" className="px-6 round...">
+                                <div>
+                                  <Label>
+                                  <Input id="email" type="email" placeholder="jiru@gmail..." value="" ...>
+                                    <input
+                                      type="email"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="email"
+                                      placeholder="jiru@gmail.com"
+                                      value=""
+                                      onChange={function onChange}
+                                      required={true}
+-                                     style={{background-size:"auto, 25px",background-image:"none, url(...",background-repeat:"...", ...}}
+                                    >
+-                                 <button
+-                                   type="button"
+-                                   style={{border-top-width:"0px",border-top-style:"none",border-top-color:"currentcolor", ...}}
+-                                 >
+                                ...
+                            ...
+                  ...
+            ...
+          ...
+
+[00:55:19.964] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:19.964] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:55:19.964] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:55:19.964] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051896158}
+[00:55:19.964] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051896158}
+[00:55:21.381] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="login/page...">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <Header>
+                  <main className="flex-1 fle...">
+                    <AuthForm mode="login">
+                      <Card className="w-full max...">
+                        <div data-slot="card" className="text-card-...">
+                          <CardHeader>
+                          <form onSubmit={function handleSubmit}>
+                            <CardContent className="space-y-4">
+                              <div data-slot="card-content" className="px-6 round...">
+                                <div>
+                                  <Label>
+                                  <Input id="email" type="email" placeholder="jiru@gmail..." value="" ...>
+                                    <input
+                                      type="email"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="email"
+                                      placeholder="jiru@gmail.com"
+                                      value=""
+                                      onChange={function onChange}
+                                      required={true}
+-                                     style={{background-size:"auto, 25px",background-image:"none, url(...",background-repeat:"...", ...}}
+                                    >
+-                                 <button
+-                                   type="button"
+-                                   style={{border-top-width:"0px",border-top-style:"none",border-top-color:"currentcolor", ...}}
+-                                 >
+                                ...
+                            ...
+                  ...
+            ...
+          ...
+
+[00:55:21.381] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:21.381] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:55:21.381] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:55:21.381] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051897578}
+[00:55:21.381] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051897579}
+[00:55:25.183] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="login/page...">
+              <SegmentTrieNode>
+              <LoginPage>
+                <div className="min-h-scre...">
+                  <Header>
+                  <main className="flex-1 fle...">
+                    <AuthForm mode="login">
+                      <Card className="w-full max...">
+                        <div data-slot="card" className="text-card-...">
+                          <CardHeader>
+                          <form onSubmit={function handleSubmit}>
+                            <CardContent className="space-y-4">
+                              <div data-slot="card-content" className="px-6 round...">
+                                <div>
+                                  <Label>
+                                  <Input id="email" type="email" placeholder="jiru@gmail..." value="" ...>
+                                    <input
+                                      type="email"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="email"
+                                      placeholder="jiru@gmail.com"
+                                      value=""
+                                      onChange={function onChange}
+                                      required={true}
+-                                     style={{background-size:"auto, 25px",background-image:"none, url(...",background-repeat:"...", ...}}
+                                    >
+-                                 <button
+-                                   type="button"
+-                                   style={{border-top-width:"0px",border-top-style:"none",border-top-color:"currentcolor", ...}}
+-                                 >
+                                ...
+                            ...
+                  ...
+            ...
+          ...
+
+[00:55:25.183] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:25.183] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:55:25.183] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:55:25.183] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051901380}
+[00:55:25.183] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051901380}
+[00:55:28.200] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:28.200] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:55:28.200] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765051904397}
+[01:01:51.632] Server  LOG      ✓ Compiled in 85ms
+[01:01:51.735] Browser ERROR   ./lib/utils.ts:46:27
+Parsing ecmascript source code failed
+  44 | };
+  45 |
+> 46 | export const isLoggedIn = ()
+     |                           ^^
+  47 |
+
+Parenthesized expression cannot be empty
+
+Import traces:
+  Client Component Browser:
+    ./lib/utils.ts [Client Component Browser]
+    ./components/header.tsx [Client Component Browser]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/utils.ts [Client Component SSR]
+    ./components/header.tsx [Client Component SSR]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+[01:03:52.023] Server  LOG      ✓ Compiled in 36ms
+[01:03:53.043] Browser ERROR   ./components/auth-form.tsx:28:1
+Ecmascript file had an error
+  26 | }
+  27 |
+> 28 | "use client";
+     | ^^^^^^^^^^^^^
+  29 |
+  30 | export default function Page() {
+  31 |   const cookieValue = document.cookie
+
+The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+
+Import trace:
+  Server Component:
+    ./components/auth-form.tsx
+    ./app/login/page.tsx
+[01:04:34.505] Server  LOG      ✓ Compiled in 34ms
+[01:04:39.131] Server  LOG      ✓ Compiled in 36ms
+[01:04:39.548] Browser ERROR   ./lib/utils.ts:54:20
+Parsing ecmascript source code failed
+  52 |   console.log(cookieValue);
+  53 |
+> 54 |   return <div>Token: {cookieValue}</div>;
+     |                    ^
+  55 | }
+  56 |
+
+Expected ';', got ':'
+
+Import traces:
+  Client Component Browser:
+    ./lib/utils.ts [Client Component Browser]
+    ./components/header.tsx [Client Component Browser]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/utils.ts [Client Component SSR]
+    ./components/header.tsx [Client Component SSR]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+[01:04:55.191] Server  LOG      ✓ Compiled in 45ms
+[01:04:57.799] Server  LOG      ✓ Compiled in 27ms
+[01:04:59.167] Server  LOG      ✓ Compiled in 41ms
+[01:05:02.196] Server  LOG      ✓ Compiled in 36ms
+[01:05:11.318] Server  LOG      ✓ Compiled in 36ms
+[01:05:29.432] Server  LOG      ✓ Compiled in 33ms
+[01:07:09.351] Browser ERROR   ./components/auth-form.tsx:44:3
+Parsing ecmascript source code failed
+  42 |
+  43 |    setIsAuthenticated( IsLoggedIn()
+> 44 |   }, [])
+     |   ^
+  45 |
+  46 |   const handleSubmit = async (e: React.FormEvent) => {
+  47 |     e.preventDefault();
+
+Expected ',', got '}'
+
+Import trace:
+  Server Component:
+    ./components/auth-form.tsx
+    ./app/login/page.tsx
+[01:07:10.354] Server  LOG      ✓ Compiled in 32ms
+[01:08:13.937] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:08:13.937] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:08:13.937] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052670135}
+[01:09:43.354] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:09:43.354] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:09:43.354] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052759551}
+[01:09:44.728] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:09:44.728] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:09:44.728] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052760926}
+[01:09:45.721] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:09:45.721] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:09:45.722] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052761919}
+[01:10:41.370] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:10:41.370] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:10:41.370] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052817567}
+[01:10:55.068] Server  LOG      ✓ Compiled in 38ms
+[01:11:13.449] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:11:13.449] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:11:13.449] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052849646}
+[01:11:20.105] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:11:20.105] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:11:20.105] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052856302}
+[01:11:21.426] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:11:21.427] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:11:21.427] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052857617}
+[01:12:15.829] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:12:15.829] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:12:15.829] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052912025}
+[01:12:28.479] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:12:28.479] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:12:28.479] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052924633}
+[01:12:29.981] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:12:29.981] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:12:29.981] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765052926171}
+[01:13:02.074] Server  LOG      ✓ Compiled in 49ms
+[01:13:02.199] Browser ERROR   ./components/header.tsx:15:11
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import an { mutate } from "swr";
+     |           ^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected ',', got '{'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:11.226] Server  LOG      ✓ Compiled in 40ms
+[01:13:11.334] Browser ERROR   ./components/header.tsx:15:31
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import  { mutate } from "swr" as swrMutate;
+     |                               ^^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected ';', got 'as'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:17.081] Server  LOG      ✓ Compiled in 45ms
+[01:13:17.184] Browser ERROR   ./components/header.tsx:15:32
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import  { mutate } from "swr"  swrMutate;
+     |                                ^^^^^^^^^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected ';', got 'swrMutate'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:23.819] Server  LOG      ✓ Compiled in 43ms
+[01:13:23.921] Browser ERROR   ./components/header.tsx:15:31
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import  { mutate } from "swr" as n;
+     |                               ^^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected ';', got 'as'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:26.974] Browser ERROR   ./components/header.tsx:15:31
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import  { mutate } from "swr" as ;
+     |                               ^^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected ';', got 'as'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:39.048] Server  LOG      ✓ Compiled in 48ms
+[01:13:39.151] Browser ERROR   ./components/header.tsx:15:20
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import  { mutate } as name from "swr" ;
+     |                    ^^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected 'from', got 'as'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:42.667] Browser ERROR   ./components/header.tsx:15:20
+Parsing ecmascript source code failed
+  13 | } from "@/components/ui/dropdown-menu";
+  14 | import useSWR from "swr";
+> 15 | import  { mutate } as nn from "swr" ;
+     |                    ^^
+  16 | import { apiFetch } from "@/lib/api";
+  17 | import { ApiBaseUrl } from "@/lib/utils";
+  18 |
+
+Expected 'from', got 'as'
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:13:46.645] Server  LOG      ✓ Compiled in 31ms
+[01:18:40.764] Server  LOG      ✓ Compiled in 48ms
+[01:18:41.609] Server  LOG      ✓ Compiled in 32ms
+[01:18:42.657] Server  LOG      ✓ Compiled in 31ms
+[01:18:59.633] Server  LOG      ✓ Compiled in 54ms
+[01:19:05.405] Server  LOG      ✓ Compiled in 28ms
+[01:19:21.400] Server  LOG      ✓ Compiled in 38ms
+[01:19:24.028] Server  LOG      ✓ Compiled in 38ms
+[01:19:42.325] Server  LOG      ✓ Compiled in 37ms
+[01:19:42.616] Server  LOG      ✓ Compiled in 38ms
+[01:19:43.742] Browser ERROR   ./lib/utils.ts:58:5
+Parsing ecmascript source code failed
+  56 |
+  57 |
+> 58 |     await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST" });
+     |     ^^^^^
+  59 |     mutate(() => true, undefined);
+  60 | }
+  61 |
+
+await isn't allowed in non-async function
+
+Import traces:
+  Client Component Browser:
+    ./lib/utils.ts [Client Component Browser]
+    ./components/header.tsx [Client Component Browser]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/utils.ts [Client Component SSR]
+    ./components/header.tsx [Client Component SSR]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+[01:19:51.773] Server  LOG      ✓ Compiled in 33ms
+[01:19:52.758] Browser ERROR   ./lib/utils.ts:55:23
+Parsing ecmascript source code failed
+  53 | }
+  54 |
+> 55 | export function async HandleLogout() {
+     |                       ^^^^^^^^^^^^
+  56 |
+  57 |
+  58 |     await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST" });
+
+Expected '(', got 'HandleLogout'
+
+Import traces:
+  Client Component Browser:
+    ./lib/utils.ts [Client Component Browser]
+    ./components/header.tsx [Client Component Browser]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/utils.ts [Client Component SSR]
+    ./components/header.tsx [Client Component SSR]
+    ./components/header.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+[01:20:15.176] Server  LOG      ✓ Compiled in 65ms
+[01:20:34.718] Server  LOG      ✓ Compiled in 41ms
+[01:20:41.110] Server  LOG      ✓ Compiled in 36ms
+[01:20:42.218] Server  LOG      ✓ Compiled in 43ms
+[01:20:50.796] Server  LOG      ✓ Compiled in 44ms
+[01:21:17.794] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:21:17.794] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:21:17.794] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053453989}
+[01:21:39.263] Server  LOG      ✓ Compiled in 36ms
+[01:21:50.444] Server  LOG      ✓ Compiled in 208ms
+[01:21:54.670] Server  LOG      ✓ Compiled in 47ms
+[01:21:56.752] Server  LOG      ✓ Compiled in 31ms
+[01:22:00.448] Server  LOG      ✓ Compiled in 31ms
+[01:22:03.790] Server  LOG      ✓ Compiled in 70ms
+[01:22:19.135] Server  LOG      ✓ Compiled in 35ms
+[01:22:20.902] Server  LOG      ✓ Compiled in 35ms
+[01:22:28.406] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:22:28.406] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:22:28.406] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053524603}
+[01:22:30.007] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:22:30.007] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:22:30.007] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053526204}
+[01:22:47.049] Server  LOG      ✓ Compiled in 34ms
+[01:22:47.252] Server  LOG      ✓ Compiled in 28ms
+[01:22:47.784] Server  LOG      ✓ Compiled in 46ms
+[01:22:47.953] Server  LOG      ✓ Compiled in 29ms
+[01:22:48.357] Server  LOG      ✓ Compiled in 38ms
+[01:22:48.660] Server  LOG      ✓ Compiled in 34ms
+[01:22:48.889] Server  LOG      ✓ Compiled in 25ms
+[01:22:49.117] Server  LOG      ✓ Compiled in 28ms
+[01:22:49.321] Server  LOG      ✓ Compiled in 28ms
+[01:22:53.809] Server  LOG      ✓ Compiled in 34ms
+[01:22:54.431] Server  LOG      ✓ Compiled in 33ms
+[01:22:54.880] Server  LOG      ✓ Compiled in 25ms
+[01:22:55.330] Server  LOG      ✓ Compiled in 24ms
+[01:23:09.909] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:23:09.909] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:23:09.909] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053566103}
+[01:24:00.465] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:24:00.465] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:24:00.465] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053616661}
+[01:25:24.124] Server  LOG      ✓ Compiled in 27ms
+[01:25:24.425] Server  LOG      ✓ Compiled in 36ms
+[01:25:25.362] Browser ERROR   ./components/header.tsx:34:7
+Ecmascript file had an error
+  32 |
+  33 |
+> 34 | const handleLogout = async () => {
+     |       ^^^^^^^^^^^^
+  35 |   // Call logout API
+  36 |   await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST", credentials: "include" });
+  37 |
+
+the name `handleLogout` is defined multiple times
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+[01:25:35.691] Server  LOG      ✓ Compiled in 43ms
+[01:25:55.143] Server  LOG      ✓ Compiled in 32ms
+[01:26:30.873] Server  LOG      ✓ Compiled in 38ms
+[01:26:35.672] Server  LOG      ✓ Compiled in 32ms
+[01:26:42.544] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:26:42.545] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:26:42.545] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053778737}
+[01:26:45.567] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:26:45.567] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:26:45.567] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053781765}
+[01:26:50.915] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053787103}
+[01:26:58.236] Browser ERROR   Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://react.dev/link/setstate-in-render Router DashboardContent DashboardContent
+[01:27:03.564] Browser ERROR   Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://react.dev/link/setstate-in-render Router AuthForm AuthForm
+[01:27:03.738] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:03.738] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[01:27:03.738] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053799936}
+[01:27:05.500] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:05.500] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[01:27:05.500] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053801697}
+[01:27:06.660] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:06.660] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[01:27:06.660] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053802858}
+[01:27:22.632] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:22.632] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[01:27:22.632] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053818828}
+[01:27:32.126] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053828260}
+[01:27:42.745] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:42.745] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:27:42.745] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053838943}
+[01:27:52.673] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:52.673] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:27:52.674] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053848871}
+[01:27:53.771] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:53.771] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:27:53.771] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053849969}
+[01:27:54.738] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:54.738] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:27:54.738] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053850935}
+[01:27:56.276] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:56.276] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:27:56.276] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053852473}
+[01:27:58.161] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:58.161] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:27:58.161] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053854358}
+[01:28:52.207] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2 color: rgb(120, 120, 120) color: inherit {"dp":"/p/[id]","o":"http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053908305}
+[01:28:52.207] Browser LOG     data {"burnAfterRead":false,"content":"import { useEffect, useState } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport Link from \"next/link\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Eye, EyeOff, Loader2 } from \"lucide-react\";\nimport { mutate } from \"swr\";\nimport { apiFetch } from \"@/lib/api\";\nimport { ApiBaseUrl, IsLoggedIn } from \"@/lib/utils\";\n\ninterface AuthFormProps {\n  mode: \"login\" | \"register\";\n}\n\nexport function AuthForm({ mode }: AuthFormProps) {\n  const router = useRouter();\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(\"\");\n  const [isAuthenticated, setIsAuthenticated] = useState(false);\n  const [showPassword, setShowPassword] = useState(false);\n  const [formData, setFormData] = useState({\n    email: \"\",\n    username: \"\",\n    password: \"\",\n  });\n\n  useEffect(() => {\n    setIsAuthenticated(IsLoggedIn());\n  }, []);\n\n  if (isAuthenticated) {\n    router.push(\"/dashboard\");\n  }\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    setLoading(true);\n    setError(\"\");\n\n    try {\n      const endpoint =\n        mode === \"login\"\n          ? `${ApiBaseUrl()}/api/auth/login`\n          : `${ApiBaseUrl()}/api/auth/register`;\n\n      const res = await apiFetch(endpoint, {\n        method: \"POST\",\n        body: formData,\n      });\n\n      const data = await res.json();\n\n      if (!res.ok) {\n        setError(data.error || \"Something went wrong\");\n        return;\n      }\n\n      // Refresh session data\n      mutate(`${ApiBaseUrl()}/api/users/mine`);\n      router.push(\"/\");\n    } catch {\n      setError(\"Failed to connect. Please try again.\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Card className=\"w-full max-w-md border-border bg-card\">\n      <CardHeader className=\"text-center\">\n        <CardTitle className=\"text-2xl text-foreground\">\n          {mode === \"login\" ? \"Welcome Back\" : \"Create Account\"}\n        </CardTitle>\n        <CardDescription>\n          {mode === \"login\"\n            ? \"Sign in to manage your pastes\"\n            : \"Sign up to save and manage your pastes\"}\n        </CardDescription>\n      </CardHeader>\n      <form onSubmit={handleSubmit}>\n        <CardContent className=\"space-y-4\">\n          <div>\n            <Label htmlFor=\"email\" className=\"text-muted-foreground\">\n              Email\n            </Label>\n            <Input\n              id=\"email\"\n              type=\"email\"\n              placeholder=\"jiru@gmail.com\"\n              value={formData.email}\n              onChange={(e) =>\n                setFormData({ ...formData, email: e.target.value })\n              }\n              className=\"mt-1.5 bg-secondary border-border\"\n              required\n            />\n          </div>\n\n          {mode === \"register\" && (\n            <div>\n              <Label htmlFor=\"username\" className=\"text-muted-foreground\">\n                Username\n              </Label>\n              <Input\n                id=\"username\"\n                type=\"text\"\n                placeholder=\"jiru\"\n                value={formData.username}\n                onChange={(e) =>\n                  setFormData({ ...formData, username: e.target.value })\n                }\n                className=\"mt-1.5 bg-secondary border-border\"\n                required\n              />\n            </div>\n          )}\n\n          <div>\n            <Label htmlFor=\"password\" className=\"text-muted-foreground\">\n              Password\n            </Label>\n            <div className=\"relative mt-1.5\">\n              <Input\n                id=\"password\"\n                type={showPassword ? \"text\" : \"password\"}\n                placeholder=\"••••••••\"\n                value={formData.password}\n                onChange={(e) =>\n                  setFormData({ ...formData, password: e.target.value })\n                }\n                className=\"bg-secondary border-border pr-10\"\n                required\n              />\n              <button\n                type=\"button\"\n                onClick={() => setShowPassword(!showPassword)}\n                className=\"absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground\"\n              >\n                {showPassword ? (\n                  <EyeOff className=\"h-4 w-4\" />\n                ) : (\n                  <Eye className=\"h-4 w-4\" />\n                )}\n              </button>\n            </div>\n          </div>\n\n          {error && <p className=\"text-sm text-destructive\">{error}</p>}\n        </CardContent>\n        <CardFooter className=\"flex flex-col gap-4 mt-4\">\n          <Button type=\"submit\" className=\"w-full\" disabled={loading}>\n            {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n            {mode === \"login\" ? \"Sign In\" : \"Create Account\"}\n          </Button>\n          <p className=\"text-sm text-muted-foreground text-center\">\n            {mode === \"login\" ? (\n              <>\n                {\"Don't have an account? \"}\n                <Link href=\"/register\" className=\"text-primary hover:underline\">\n                  Sign up\n                </Link>\n              </>\n            ) : (\n              <>\n                Already have an account?{\" \"}\n                <Link href=\"/login\" className=\"text-primary hover:underline\">\n                  Sign in\n                </Link>\n              </>\n            )}\n          </p>\n        </CardFooter>\n      </form>\n    </Card>\n  );\n}","createdAt":"2025-12-06T23:45:07.285953+03:00","expiresAt":null,"id":"73096d98-d2e4-11f0-b3cb-8c8d28d905b2","isPublic":true,"language":"typescript","password":"","title":"header.ts","userId":null,"views":0}
+[01:28:52.207] Browser LOG     %c%s %o color: rgba(124, 124, 124, 0.75) Element previously highlighted. To highlight again, first unset `dataset.highlighted`. <code>
+[01:29:01.957] Browser LOG     data {"burnAfterRead":false,"content":"import { useEffect, useState } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport Link from \"next/link\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Eye, EyeOff, Loader2 } from \"lucide-react\";\nimport { mutate } from \"swr\";\nimport { apiFetch } from \"@/lib/api\";\nimport { ApiBaseUrl, IsLoggedIn } from \"@/lib/utils\";\n\ninterface AuthFormProps {\n  mode: \"login\" | \"register\";\n}\n\nexport function AuthForm({ mode }: AuthFormProps) {\n  const router = useRouter();\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(\"\");\n  const [isAuthenticated, setIsAuthenticated] = useState(false);\n  const [showPassword, setShowPassword] = useState(false);\n  const [formData, setFormData] = useState({\n    email: \"\",\n    username: \"\",\n    password: \"\",\n  });\n\n  useEffect(() => {\n    setIsAuthenticated(IsLoggedIn());\n  }, []);\n\n  if (isAuthenticated) {\n    router.push(\"/dashboard\");\n  }\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    setLoading(true);\n    setError(\"\");\n\n    try {\n      const endpoint =\n        mode === \"login\"\n          ? `${ApiBaseUrl()}/api/auth/login`\n          : `${ApiBaseUrl()}/api/auth/register`;\n\n      const res = await apiFetch(endpoint, {\n        method: \"POST\",\n        body: formData,\n      });\n\n      const data = await res.json();\n\n      if (!res.ok) {\n        setError(data.error || \"Something went wrong\");\n        return;\n      }\n\n      // Refresh session data\n      mutate(`${ApiBaseUrl()}/api/users/mine`);\n      router.push(\"/\");\n    } catch {\n      setError(\"Failed to connect. Please try again.\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Card className=\"w-full max-w-md border-border bg-card\">\n      <CardHeader className=\"text-center\">\n        <CardTitle className=\"text-2xl text-foreground\">\n          {mode === \"login\" ? \"Welcome Back\" : \"Create Account\"}\n        </CardTitle>\n        <CardDescription>\n          {mode === \"login\"\n            ? \"Sign in to manage your pastes\"\n            : \"Sign up to save and manage your pastes\"}\n        </CardDescription>\n      </CardHeader>\n      <form onSubmit={handleSubmit}>\n        <CardContent className=\"space-y-4\">\n          <div>\n            <Label htmlFor=\"email\" className=\"text-muted-foreground\">\n              Email\n            </Label>\n            <Input\n              id=\"email\"\n              type=\"email\"\n              placeholder=\"jiru@gmail.com\"\n              value={formData.email}\n              onChange={(e) =>\n                setFormData({ ...formData, email: e.target.value })\n              }\n              className=\"mt-1.5 bg-secondary border-border\"\n              required\n            />\n          </div>\n\n          {mode === \"register\" && (\n            <div>\n              <Label htmlFor=\"username\" className=\"text-muted-foreground\">\n                Username\n              </Label>\n              <Input\n                id=\"username\"\n                type=\"text\"\n                placeholder=\"jiru\"\n                value={formData.username}\n                onChange={(e) =>\n                  setFormData({ ...formData, username: e.target.value })\n                }\n                className=\"mt-1.5 bg-secondary border-border\"\n                required\n              />\n            </div>\n          )}\n\n          <div>\n            <Label htmlFor=\"password\" className=\"text-muted-foreground\">\n              Password\n            </Label>\n            <div className=\"relative mt-1.5\">\n              <Input\n                id=\"password\"\n                type={showPassword ? \"text\" : \"password\"}\n                placeholder=\"••••••••\"\n                value={formData.password}\n                onChange={(e) =>\n                  setFormData({ ...formData, password: e.target.value })\n                }\n                className=\"bg-secondary border-border pr-10\"\n                required\n              />\n              <button\n                type=\"button\"\n                onClick={() => setShowPassword(!showPassword)}\n                className=\"absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground\"\n              >\n                {showPassword ? (\n                  <EyeOff className=\"h-4 w-4\" />\n                ) : (\n                  <Eye className=\"h-4 w-4\" />\n                )}\n              </button>\n            </div>\n          </div>\n\n          {error && <p className=\"text-sm text-destructive\">{error}</p>}\n        </CardContent>\n        <CardFooter className=\"flex flex-col gap-4 mt-4\">\n          <Button type=\"submit\" className=\"w-full\" disabled={loading}>\n            {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n            {mode === \"login\" ? \"Sign In\" : \"Create Account\"}\n          </Button>\n          <p className=\"text-sm text-muted-foreground text-center\">\n            {mode === \"login\" ? (\n              <>\n                {\"Don't have an account? \"}\n                <Link href=\"/register\" className=\"text-primary hover:underline\">\n                  Sign up\n                </Link>\n              </>\n            ) : (\n              <>\n                Already have an account?{\" \"}\n                <Link href=\"/login\" className=\"text-primary hover:underline\">\n                  Sign in\n                </Link>\n              </>\n            )}\n          </p>\n        </CardFooter>\n      </form>\n    </Card>\n  );\n}","createdAt":"2025-12-06T23:45:07.285953+03:00","expiresAt":null,"id":"73096d98-d2e4-11f0-b3cb-8c8d28d905b2","isPublic":true,"language":"typescript","password":"","title":"header.ts","userId":null,"views":1}
+[01:29:01.957] Browser LOG     %c%s %o color: rgba(124, 124, 124, 0.75) Element previously highlighted. To highlight again, first unset `dataset.highlighted`. <code>
+[01:29:01.957] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:01.957] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","route":"/p/[id]"}
+[01:29:01.957] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2 color: rgb(120, 120, 120) color: inherit {"dp":"/p/[id]","o":"http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053918154}
+[01:29:18.124] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:18.124] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","route":"/p/[id]"}
+[01:29:18.124] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2 color: rgb(120, 120, 120) color: inherit {"dp":"/p/[id]","o":"http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053934289}
+[01:29:18.124] Browser LOG     data {"burnAfterRead":false,"content":"import { useEffect, useState } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport Link from \"next/link\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Eye, EyeOff, Loader2 } from \"lucide-react\";\nimport { mutate } from \"swr\";\nimport { apiFetch } from \"@/lib/api\";\nimport { ApiBaseUrl, IsLoggedIn } from \"@/lib/utils\";\n\ninterface AuthFormProps {\n  mode: \"login\" | \"register\";\n}\n\nexport function AuthForm({ mode }: AuthFormProps) {\n  const router = useRouter();\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(\"\");\n  const [isAuthenticated, setIsAuthenticated] = useState(false);\n  const [showPassword, setShowPassword] = useState(false);\n  const [formData, setFormData] = useState({\n    email: \"\",\n    username: \"\",\n    password: \"\",\n  });\n\n  useEffect(() => {\n    setIsAuthenticated(IsLoggedIn());\n  }, []);\n\n  if (isAuthenticated) {\n    router.push(\"/dashboard\");\n  }\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    setLoading(true);\n    setError(\"\");\n\n    try {\n      const endpoint =\n        mode === \"login\"\n          ? `${ApiBaseUrl()}/api/auth/login`\n          : `${ApiBaseUrl()}/api/auth/register`;\n\n      const res = await apiFetch(endpoint, {\n        method: \"POST\",\n        body: formData,\n      });\n\n      const data = await res.json();\n\n      if (!res.ok) {\n        setError(data.error || \"Something went wrong\");\n        return;\n      }\n\n      // Refresh session data\n      mutate(`${ApiBaseUrl()}/api/users/mine`);\n      router.push(\"/\");\n    } catch {\n      setError(\"Failed to connect. Please try again.\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Card className=\"w-full max-w-md border-border bg-card\">\n      <CardHeader className=\"text-center\">\n        <CardTitle className=\"text-2xl text-foreground\">\n          {mode === \"login\" ? \"Welcome Back\" : \"Create Account\"}\n        </CardTitle>\n        <CardDescription>\n          {mode === \"login\"\n            ? \"Sign in to manage your pastes\"\n            : \"Sign up to save and manage your pastes\"}\n        </CardDescription>\n      </CardHeader>\n      <form onSubmit={handleSubmit}>\n        <CardContent className=\"space-y-4\">\n          <div>\n            <Label htmlFor=\"email\" className=\"text-muted-foreground\">\n              Email\n            </Label>\n            <Input\n              id=\"email\"\n              type=\"email\"\n              placeholder=\"jiru@gmail.com\"\n              value={formData.email}\n              onChange={(e) =>\n                setFormData({ ...formData, email: e.target.value })\n              }\n              className=\"mt-1.5 bg-secondary border-border\"\n              required\n            />\n          </div>\n\n          {mode === \"register\" && (\n            <div>\n              <Label htmlFor=\"username\" className=\"text-muted-foreground\">\n                Username\n              </Label>\n              <Input\n                id=\"username\"\n                type=\"text\"\n                placeholder=\"jiru\"\n                value={formData.username}\n                onChange={(e) =>\n                  setFormData({ ...formData, username: e.target.value })\n                }\n                className=\"mt-1.5 bg-secondary border-border\"\n                required\n              />\n            </div>\n          )}\n\n          <div>\n            <Label htmlFor=\"password\" className=\"text-muted-foreground\">\n              Password\n            </Label>\n            <div className=\"relative mt-1.5\">\n              <Input\n                id=\"password\"\n                type={showPassword ? \"text\" : \"password\"}\n                placeholder=\"••••••••\"\n                value={formData.password}\n                onChange={(e) =>\n                  setFormData({ ...formData, password: e.target.value })\n                }\n                className=\"bg-secondary border-border pr-10\"\n                required\n              />\n              <button\n                type=\"button\"\n                onClick={() => setShowPassword(!showPassword)}\n                className=\"absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground\"\n              >\n                {showPassword ? (\n                  <EyeOff className=\"h-4 w-4\" />\n                ) : (\n                  <Eye className=\"h-4 w-4\" />\n                )}\n              </button>\n            </div>\n          </div>\n\n          {error && <p className=\"text-sm text-destructive\">{error}</p>}\n        </CardContent>\n        <CardFooter className=\"flex flex-col gap-4 mt-4\">\n          <Button type=\"submit\" className=\"w-full\" disabled={loading}>\n            {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n            {mode === \"login\" ? \"Sign In\" : \"Create Account\"}\n          </Button>\n          <p className=\"text-sm text-muted-foreground text-center\">\n            {mode === \"login\" ? (\n              <>\n                {\"Don't have an account? \"}\n                <Link href=\"/register\" className=\"text-primary hover:underline\">\n                  Sign up\n                </Link>\n              </>\n            ) : (\n              <>\n                Already have an account?{\" \"}\n                <Link href=\"/login\" className=\"text-primary hover:underline\">\n                  Sign in\n                </Link>\n              </>\n            )}\n          </p>\n        </CardFooter>\n      </form>\n    </Card>\n  );\n}","createdAt":"2025-12-06T23:45:07.285953+03:00","expiresAt":null,"id":"73096d98-d2e4-11f0-b3cb-8c8d28d905b2","isPublic":true,"language":"typescript","password":"","title":"header.ts","userId":null,"views":2}
+[01:29:18.124] Browser LOG     %c%s %o color: rgba(124, 124, 124, 0.75) Element previously highlighted. To highlight again, first unset `dataset.highlighted`. <code>
+[01:29:25.368] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:25.368] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","route":"/p/[id]"}
+[01:29:25.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2 color: rgb(120, 120, 120) color: inherit {"dp":"/p/[id]","o":"http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765053941536}
+[01:29:25.368] Browser LOG     data {"burnAfterRead":false,"content":"import { useEffect, useState } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport Link from \"next/link\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Eye, EyeOff, Loader2 } from \"lucide-react\";\nimport { mutate } from \"swr\";\nimport { apiFetch } from \"@/lib/api\";\nimport { ApiBaseUrl, IsLoggedIn } from \"@/lib/utils\";\n\ninterface AuthFormProps {\n  mode: \"login\" | \"register\";\n}\n\nexport function AuthForm({ mode }: AuthFormProps) {\n  const router = useRouter();\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(\"\");\n  const [isAuthenticated, setIsAuthenticated] = useState(false);\n  const [showPassword, setShowPassword] = useState(false);\n  const [formData, setFormData] = useState({\n    email: \"\",\n    username: \"\",\n    password: \"\",\n  });\n\n  useEffect(() => {\n    setIsAuthenticated(IsLoggedIn());\n  }, []);\n\n  if (isAuthenticated) {\n    router.push(\"/dashboard\");\n  }\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    setLoading(true);\n    setError(\"\");\n\n    try {\n      const endpoint =\n        mode === \"login\"\n          ? `${ApiBaseUrl()}/api/auth/login`\n          : `${ApiBaseUrl()}/api/auth/register`;\n\n      const res = await apiFetch(endpoint, {\n        method: \"POST\",\n        body: formData,\n      });\n\n      const data = await res.json();\n\n      if (!res.ok) {\n        setError(data.error || \"Something went wrong\");\n        return;\n      }\n\n      // Refresh session data\n      mutate(`${ApiBaseUrl()}/api/users/mine`);\n      router.push(\"/\");\n    } catch {\n      setError(\"Failed to connect. Please try again.\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Card className=\"w-full max-w-md border-border bg-card\">\n      <CardHeader className=\"text-center\">\n        <CardTitle className=\"text-2xl text-foreground\">\n          {mode === \"login\" ? \"Welcome Back\" : \"Create Account\"}\n        </CardTitle>\n        <CardDescription>\n          {mode === \"login\"\n            ? \"Sign in to manage your pastes\"\n            : \"Sign up to save and manage your pastes\"}\n        </CardDescription>\n      </CardHeader>\n      <form onSubmit={handleSubmit}>\n        <CardContent className=\"space-y-4\">\n          <div>\n            <Label htmlFor=\"email\" className=\"text-muted-foreground\">\n              Email\n            </Label>\n            <Input\n              id=\"email\"\n              type=\"email\"\n              placeholder=\"jiru@gmail.com\"\n              value={formData.email}\n              onChange={(e) =>\n                setFormData({ ...formData, email: e.target.value })\n              }\n              className=\"mt-1.5 bg-secondary border-border\"\n              required\n            />\n          </div>\n\n          {mode === \"register\" && (\n            <div>\n              <Label htmlFor=\"username\" className=\"text-muted-foreground\">\n                Username\n              </Label>\n              <Input\n                id=\"username\"\n                type=\"text\"\n                placeholder=\"jiru\"\n                value={formData.username}\n                onChange={(e) =>\n                  setFormData({ ...formData, username: e.target.value })\n                }\n                className=\"mt-1.5 bg-secondary border-border\"\n                required\n              />\n            </div>\n          )}\n\n          <div>\n            <Label htmlFor=\"password\" className=\"text-muted-foreground\">\n              Password\n            </Label>\n            <div className=\"relative mt-1.5\">\n              <Input\n                id=\"password\"\n                type={showPassword ? \"text\" : \"password\"}\n                placeholder=\"••••••••\"\n                value={formData.password}\n                onChange={(e) =>\n                  setFormData({ ...formData, password: e.target.value })\n                }\n                className=\"bg-secondary border-border pr-10\"\n                required\n              />\n              <button\n                type=\"button\"\n                onClick={() => setShowPassword(!showPassword)}\n                className=\"absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground\"\n              >\n                {showPassword ? (\n                  <EyeOff className=\"h-4 w-4\" />\n                ) : (\n                  <Eye className=\"h-4 w-4\" />\n                )}\n              </button>\n            </div>\n          </div>\n\n          {error && <p className=\"text-sm text-destructive\">{error}</p>}\n        </CardContent>\n        <CardFooter className=\"flex flex-col gap-4 mt-4\">\n          <Button type=\"submit\" className=\"w-full\" disabled={loading}>\n            {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n            {mode === \"login\" ? \"Sign In\" : \"Create Account\"}\n          </Button>\n          <p className=\"text-sm text-muted-foreground text-center\">\n            {mode === \"login\" ? (\n              <>\n                {\"Don't have an account? \"}\n                <Link href=\"/register\" className=\"text-primary hover:underline\">\n                  Sign up\n                </Link>\n              </>\n            ) : (\n              <>\n                Already have an account?{\" \"}\n                <Link href=\"/login\" className=\"text-primary hover:underline\">\n                  Sign in\n                </Link>\n              </>\n            )}\n          </p>\n        </CardFooter>\n      </form>\n    </Card>\n  );\n}","createdAt":"2025-12-06T23:45:07.285953+03:00","expiresAt":null,"id":"73096d98-d2e4-11f0-b3cb-8c8d28d905b2","isPublic":true,"language":"typescript","password":"","title":"header.ts","userId":null,"views":3}
+[01:29:25.368] Browser LOG     %c%s %o color: rgba(124, 124, 124, 0.75) Element previously highlighted. To highlight again, first unset `dataset.highlighted`. <code>
+[01:30:35.705] Server  LOG      ✓ Compiled in 38ms
+[01:31:18.741] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[01:31:18.799] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[01:31:18.872] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[01:31:18.939] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[01:31:18.983] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[01:31:20.617] Browser ERROR   uncaughtError: ReferenceError: Toaster is not defined
+[01:31:25.515] Server  LOG      ✓ Compiled in 44ms
+[01:31:25.632] Server  ERROR    ⨯ ReferenceError: Toaster is not defined
+[01:31:26.065] Browser ERROR   uncaughtError: ReferenceError: Toaster is not defined
+[01:31:38.104] Server  LOG      ✓ Compiled in 230ms
+[01:31:39.483] Browser LOG     data {"burnAfterRead":false,"content":"import { useEffect, useState } from \"react\";\nimport { useRouter } from \"next/navigation\";\nimport Link from \"next/link\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Eye, EyeOff, Loader2 } from \"lucide-react\";\nimport { mutate } from \"swr\";\nimport { apiFetch } from \"@/lib/api\";\nimport { ApiBaseUrl, IsLoggedIn } from \"@/lib/utils\";\n\ninterface AuthFormProps {\n  mode: \"login\" | \"register\";\n}\n\nexport function AuthForm({ mode }: AuthFormProps) {\n  const router = useRouter();\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState(\"\");\n  const [isAuthenticated, setIsAuthenticated] = useState(false);\n  const [showPassword, setShowPassword] = useState(false);\n  const [formData, setFormData] = useState({\n    email: \"\",\n    username: \"\",\n    password: \"\",\n  });\n\n  useEffect(() => {\n    setIsAuthenticated(IsLoggedIn());\n  }, []);\n\n  if (isAuthenticated) {\n    router.push(\"/dashboard\");\n  }\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    setLoading(true);\n    setError(\"\");\n\n    try {\n      const endpoint =\n        mode === \"login\"\n          ? `${ApiBaseUrl()}/api/auth/login`\n          : `${ApiBaseUrl()}/api/auth/register`;\n\n      const res = await apiFetch(endpoint, {\n        method: \"POST\",\n        body: formData,\n      });\n\n      const data = await res.json();\n\n      if (!res.ok) {\n        setError(data.error || \"Something went wrong\");\n        return;\n      }\n\n      // Refresh session data\n      mutate(`${ApiBaseUrl()}/api/users/mine`);\n      router.push(\"/\");\n    } catch {\n      setError(\"Failed to connect. Please try again.\");\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <Card className=\"w-full max-w-md border-border bg-card\">\n      <CardHeader className=\"text-center\">\n        <CardTitle className=\"text-2xl text-foreground\">\n          {mode === \"login\" ? \"Welcome Back\" : \"Create Account\"}\n        </CardTitle>\n        <CardDescription>\n          {mode === \"login\"\n            ? \"Sign in to manage your pastes\"\n            : \"Sign up to save and manage your pastes\"}\n        </CardDescription>\n      </CardHeader>\n      <form onSubmit={handleSubmit}>\n        <CardContent className=\"space-y-4\">\n          <div>\n            <Label htmlFor=\"email\" className=\"text-muted-foreground\">\n              Email\n            </Label>\n            <Input\n              id=\"email\"\n              type=\"email\"\n              placeholder=\"jiru@gmail.com\"\n              value={formData.email}\n              onChange={(e) =>\n                setFormData({ ...formData, email: e.target.value })\n              }\n              className=\"mt-1.5 bg-secondary border-border\"\n              required\n            />\n          </div>\n\n          {mode === \"register\" && (\n            <div>\n              <Label htmlFor=\"username\" className=\"text-muted-foreground\">\n                Username\n              </Label>\n              <Input\n                id=\"username\"\n                type=\"text\"\n                placeholder=\"jiru\"\n                value={formData.username}\n                onChange={(e) =>\n                  setFormData({ ...formData, username: e.target.value })\n                }\n                className=\"mt-1.5 bg-secondary border-border\"\n                required\n              />\n            </div>\n          )}\n\n          <div>\n            <Label htmlFor=\"password\" className=\"text-muted-foreground\">\n              Password\n            </Label>\n            <div className=\"relative mt-1.5\">\n              <Input\n                id=\"password\"\n                type={showPassword ? \"text\" : \"password\"}\n                placeholder=\"••••••••\"\n                value={formData.password}\n                onChange={(e) =>\n                  setFormData({ ...formData, password: e.target.value })\n                }\n                className=\"bg-secondary border-border pr-10\"\n                required\n              />\n              <button\n                type=\"button\"\n                onClick={() => setShowPassword(!showPassword)}\n                className=\"absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground\"\n              >\n                {showPassword ? (\n                  <EyeOff className=\"h-4 w-4\" />\n                ) : (\n                  <Eye className=\"h-4 w-4\" />\n                )}\n              </button>\n            </div>\n          </div>\n\n          {error && <p className=\"text-sm text-destructive\">{error}</p>}\n        </CardContent>\n        <CardFooter className=\"flex flex-col gap-4 mt-4\">\n          <Button type=\"submit\" className=\"w-full\" disabled={loading}>\n            {loading && <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />}\n            {mode === \"login\" ? \"Sign In\" : \"Create Account\"}\n          </Button>\n          <p className=\"text-sm text-muted-foreground text-center\">\n            {mode === \"login\" ? (\n              <>\n                {\"Don't have an account? \"}\n                <Link href=\"/register\" className=\"text-primary hover:underline\">\n                  Sign up\n                </Link>\n              </>\n            ) : (\n              <>\n                Already have an account?{\" \"}\n                <Link href=\"/login\" className=\"text-primary hover:underline\">\n                  Sign in\n                </Link>\n              </>\n            )}\n          </p>\n        </CardFooter>\n      </form>\n    </Card>\n  );\n}","createdAt":"2025-12-06T23:45:07.285953+03:00","expiresAt":null,"id":"73096d98-d2e4-11f0-b3cb-8c8d28d905b2","isPublic":true,"language":"typescript","password":"","title":"header.ts","userId":null,"views":4}
+[01:31:39.483] Browser LOG     %c%s %o color: rgba(124, 124, 124, 0.75) Element previously highlighted. To highlight again, first unset `dataset.highlighted`. <code>
+[01:31:39.483] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:31:39.483] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","route":"/p/[id]"}
+[01:31:39.483] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2 color: rgb(120, 120, 120) color: inherit {"dp":"/p/[id]","o":"http://localhost:3000/p/73096d98-d2e4-11f0-b3cb-8c8d28d905b2","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054075175}
+[01:33:04.754] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054160951}
+[01:33:54.206] Server  LOG      ✓ Compiled in 89ms
+[01:33:59.175] Server  LOG      ✓ Compiled in 34ms
+[01:34:05.102] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054221221}
+[01:34:28.045] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/p/7259b16f-d29f-11f0-b8c8-8c8d28d905b2 color: rgb(120, 120, 120) color: inherit {"dp":"/p/[id]","o":"http://localhost:3000/p/7259b16f-d29f-11f0-b8c8-8c8d28d905b2","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054244159}
+[01:34:28.045] Browser LOG     data {"burnAfterRead":false,"content":"// Package routes contains all route definitions for the API server\npackage routes\n\nimport (\n\t\"time\"\n\n\t\"github.com/gin-contrib/cors\"\n\t\"github.com/gin-gonic/gin\"\n\t\"github.com/jirugutema/gopastebin/internal/handler\"\n\t\"github.com/jirugutema/gopastebin/internal/middleware\"\n)\n\nfunc Routes() *gin.Engine {\n\trouter := gin.Default()\n\t// router.Use(pkg.Logger)\n\n\tcorsConfig := cors.DefaultConfig()\n\tcorsConfig.AllowOrigins = []string{\"http://localhost:3000\", \"https://gopastebin.vercel.com\"}\n\tcorsConfig.AllowMethods = []string{\"GET\", \"POST\", \"PUT\", \"PATCH\", \"DELETE\", \"OPTIONS\"}\n\tcorsConfig.AllowHeaders = []string{\"Origin\", \"Content-Type\", \"Authorization\", \"Accept\", \"User-Agent\", \"Cache-Control\", \"Pragma\"}\n\tcorsConfig.ExposeHeaders = []string{\"Content-Length\"}\n\tcorsConfig.AllowCredentials = true\n\tcorsConfig.MaxAge = 12 * time.Hour\n\trouter.Use(cors.New(corsConfig))\n\n\t// Authentication\n\trouter.GET(\"/api/ping\", handler.PingHandler)\n\trouter.POST(\"/api/auth/login\", handler.LoginHandler)\n\trouter.POST(\"/api/auth/register\", handler.RegisterHandler)\n\trouter.GET(\"/api/auth/refresh\", handler.GetAccessToken)\n\trouter.GET(\"/api/auth/logout\", handler.LogoutHandler)\n\n\t// Paste\n\trouter.POST(\"/api/paste\", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)\n\trouter.GET(\"/api/paste/:id\", handler.GetPasteHandler)\n\trouter.GET(\"/api/paste/mine\", middleware.AuthMiddleware(), handler.GetMyPastesHandler)\n\trouter.DELETE(\"/api/paste/:id\", middleware.AuthMiddleware(), handler.DeletePasteHandler)\n\n\t// User\n\trouter.DELETE(\"/api/users/me\", middleware.AuthMiddleware(), handler.DeleteUserHandler)\n\trouter.GET(\"/api/users/me\", middleware.AuthMiddleware(), handler.GetMeHandler)\n\treturn router\n}","createdAt":"2025-12-06T15:31:10.859913+03:00","expiresAt":null,"id":"7259b16f-d29f-11f0-b8c8-8c8d28d905b2","isPublic":true,"language":"go","password":"","title":"gopastebin's router code","userId":"664c4c6f-d288-11f0-915a-8c8d28d905b2","views":29}
+[01:34:28.045] Browser LOG     %c%s %o color: rgba(124, 124, 124, 0.75) Element previously highlighted. To highlight again, first unset `dataset.highlighted`. <code>
+[01:34:38.059] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054254187}
+[01:34:53.102] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054269295}
+[01:34:58.252] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:34:58.252] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[01:34:58.252] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765054274450}
+[01:35:41.061] Server  LOG      ✓ Compiled in 60ms
+[01:37:02.272] Server  LOG      ✓ Compiled in 45ms
+[01:37:15.967] Server  LOG      ✓ Compiled in 35ms
+[01:37:45.976] Server  LOG      ✓ Compiled in 43ms
+[01:37:46.078] Browser ERROR   ./components/dashboard-content.tsx:206:27
+Parsing ecmascript source code failed
+  204 |       </div>
+  205 |
+> 206 |       {pastesLoading ? My Pastes(
+      |                           ^^^^^^
+  207 |         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  208 |           {[...Array(6)].map((_, i) => (
+  209 |             <div
+
+Expected '</', got 'Pastes'
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:38:05.479] Browser ERROR   ./components/dashboard-content.tsx:206:27
+Parsing ecmascript source code failed
+  204 |       </div>
+  205 |
+> 206 |       {pastesLoading ? My Pastes(
+      |                           ^^^^^^
+  207 |         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  208 |           {[...Array(6)].map((_, i) => (
+  209 |             <div
+
+Expected '</', got 'Pastes'
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:38:23.279] Browser ERROR   ./components/dashboard-content.tsx:206:27
+Parsing ecmascript source code failed
+  204 |       </div>
+  205 |
+> 206 |       {pastesLoading ? My Pastes(
+      |                           ^^^^^^
+  207 |         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  208 |           {[...Array(6)].map((_, i) => (
+  209 |             <div
+
+Expected '</', got 'Pastes'
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:38:26.584] Browser ERROR   ./components/dashboard-content.tsx:206:27
+Parsing ecmascript source code failed
+  204 |       </div>
+  205 |
+> 206 |       {pastesLoading ? My Pastes(
+      |                           ^^^^^^
+  207 |         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  208 |           {[...Array(6)].map((_, i) => (
+  209 |             <div
+
+Expected '</', got 'Pastes'
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:38:38.754] Server  LOG      ✓ Compiled in 29ms
+[01:38:38.855] Browser ERROR   ./components/dashboard-content.tsx:265:6
+Parsing ecmascript source code failed
+  263 |         </DialogContent>
+  264 |       </Dialog>
+> 265 |     </div>
+      |      ^^^^^
+  266 |   );
+  267 | }
+  268 |
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:39:06.604] Browser ERROR   ./components/dashboard-content.tsx:234:6
+Parsing ecmascript source code failed
+  232 |         </DialogContent>
+  233 |       </Dialog>
+> 234 |     </div>
+      |      ^^^^^
+  235 |   );
+  236 | }
+  237 |
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:39:09.765] Browser ERROR   ./components/dashboard-content.tsx:265:6
+Parsing ecmascript source code failed
+  263 |         </DialogContent>
+  264 |       </Dialog>
+> 265 |     </div>
+      |      ^^^^^
+  266 |   );
+  267 | }
+  268 |
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:39:09.939] Server  LOG      ✓ Compiled in 29ms
+[01:39:10.040] Browser ERROR   ./components/dashboard-content.tsx:206:27
+Parsing ecmascript source code failed
+  204 |       </div>
+  205 |
+> 206 |       {pastesLoading ? My Pastes(
+      |                           ^^^^^^
+  207 |         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  208 |           {[...Array(6)].map((_, i) => (
+  209 |             <div
+
+Expected '</', got 'Pastes'
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:39:10.351] Browser ERROR   ./components/dashboard-content.tsx:206:27
+Parsing ecmascript source code failed
+  204 |       </div>
+  205 |
+> 206 |       {pastesLoading ? My Pastes(
+      |                           ^^^^^^
+  207 |         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  208 |           {[...Array(6)].map((_, i) => (
+  209 |             <div
+
+Expected '</', got 'Pastes'
+
+Import trace:
+  Server Component:
+    ./components/dashboard-content.tsx
+    ./app/dashboard/page.tsx
+[01:39:10.874] Server  LOG      ✓ Compiled in 48ms
+[01:39:11.140] Server  LOG      ✓ Compiled in 28ms
+[01:39:11.420] Server  LOG      ✓ Compiled in 54ms
+[01:39:26.755] Server  LOG      ✓ Compiled in 25ms
+[01:39:27.089] Server  LOG      ✓ Compiled in 28ms
+[01:39:44.111] Server  LOG      ✓ Compiled in 33ms
+[01:39:52.800] Server  LOG      ✓ Compiled in 29ms
+[01:40:29.250] Server  LOG      ✓ Compiled in 38ms
+[01:40:36.530] Server  LOG      ✓ Compiled in 40ms
+[01:40:50.124] Server  LOG      ✓ Compiled in 31ms
+[01:41:02.197] Server  LOG      ✓ Compiled in 33ms
+[01:41:14.518] Server  LOG      ✓ Compiled in 47ms
+[01:41:14.730] Server  LOG      ✓ Compiled in 32ms
+[01:41:16.443] Server  LOG      ✓ Compiled in 31ms
+[01:41:26.063] Server  LOG      ✓ Compiled in 38ms
+[01:41:34.398] Server  LOG      ✓ Compiled in 33ms
+[01:41:47.210] Server  LOG      ✓ Compiled in 30ms
+[01:41:51.543] Server  LOG      ✓ Compiled in 47ms
+[01:41:57.789] Server  LOG      ✓ Compiled in 49ms
+[01:41:59.734] Server  LOG      ✓ Compiled in 31ms
+[01:42:05.479] Server  LOG      ✓ Compiled in 34ms
+[01:42:14.177] Server  LOG      ✓ Compiled in 35ms
+[01:42:40.357] Server  LOG      ✓ Compiled in 91ms
+[01:42:47.790] Server  LOG      ✓ Compiled in 39ms
+[01:42:48.103] Server  LOG      ✓ Compiled in 36ms
+[01:43:00.928] Server  LOG      ✓ Compiled in 87ms
+[01:43:12.436] Server  LOG      ✓ Compiled in 99ms
+[01:43:16.614] Server  LOG      ✓ Compiled in 79ms
+[01:43:36.572] Server  LOG      ✓ Compiled in 95ms
+[01:43:45.270] Server  LOG      ✓ Compiled in 37ms
+[01:44:51.781] Server  LOG      ✓ Compiled in 38ms
+[01:45:01.106] Server  LOG      ✓ Compiled in 83ms
+[01:45:30.635] Server  LOG      ✓ Compiled in 32ms
+[01:45:37.447] Server  LOG      ✓ Compiled in 33ms
+[01:45:53.283] Server  LOG      ✓ Compiled in 44ms
+[01:46:24.231] Server  LOG      ✓ Compiled in 45ms
+[01:47:40.837] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055036966}
+[01:49:21.888] Browser ERROR   ./app/layout.tsx:10:5
+Parsing ecmascript source code failed
+   8 |   title: "KaiShare - Share Code & Text Securely",
+   9 |   description
+> 10 |     "A modern pastebin with syntax highlighting, password protection, burn after read.",
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 |   authors: [{ name: "Jiru Gutema", url: "https://jirugutema.vercel.app" }],
+  12 |   icons: "/logo.png",
+  13 | };
+
+Unexpected token `string literal (A modern pastebin with syntax highlighting, password protection, burn after read., "A modern pastebin with syntax highlighting, password protection, burn after read.")`. Expected ... , *,  (, [, :, , ?, =, an identifier, public, protected, private, readonly, <.
+[01:49:25.370] Server  LOG      ✓ Compiled in 34ms
+[01:54:11.411] Server  LOG      ✓ Compiled in 69ms
+[01:54:12.410] Server  LOG      ✓ Compiled in 59ms
+[01:54:49.581] Server  LOG      ✓ Compiled in 44ms
+[01:54:50.770] Server  LOG      ✓ Compiled in 30ms
+[01:54:51.635] Server  LOG      ✓ Compiled in 41ms
+[01:54:53.014] Server  LOG      ✓ Compiled in 29ms
+[01:55:14.452] Server  LOG      ✓ Compiled in 39ms
+[01:55:20.996] Server  LOG      ✓ Compiled in 39ms
+[01:55:43.588] Server  LOG      ✓ Compiled in 34ms
+[01:56:14.793] Server  LOG      ✓ Compiled in 49ms
+[01:56:18.789] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055554972}
+[01:56:19.961] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055556094}
+[01:56:23.868] Server  LOG      ✓ Compiled in 33ms
+[01:56:27.081] Server  LOG      ✓ Compiled in 44ms
+[01:57:26.594] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:57:26.594] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:57:26.594] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055622785}
+[01:57:27.685] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:57:27.685] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:57:27.685] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055623883}
+[01:57:35.309] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055631497}
+[01:59:53.488] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:59:53.488] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/register","route":"/register"}
+[01:59:53.488] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055769683}
+[01:59:54.315] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055770450}
+[02:02:42.147] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:02:42.147] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:02:42.147] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1765055938345}

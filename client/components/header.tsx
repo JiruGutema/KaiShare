@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Plus, User, LogOut, LayoutDashboard, MoonStar } from "lucide-react";
+import { Plus, User, LogOut, MoonStar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -24,10 +24,16 @@ export function Header() {
     fetcher,
   );
 
-  const handleLogout = async () => {
-    await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST" });
-    mutate(null);
-  };
+const handleLogout = async () => {
+  // Call logout API
+  await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST", credentials: "include" });
+
+  // Clear SWR cache for user session
+  mutate(`${ApiBaseUrl()}/api/users/me`, false);
+
+  // Optional: redirect to homepage/login
+  window.location.href = "/";
+};
 
   return (
     <header className="border-b border-border bg-card">
@@ -61,12 +67,11 @@ export function Header() {
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem asChild>
                     <Link href="/dashboard">
-                      My Pastes
+                      User Account
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>
-                    <LogOut className="mr-2 h-4 w-4" />
+                  <DropdownMenuItem onClick={handleLogout} className="text-orange-600 font-bold">
                     Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>

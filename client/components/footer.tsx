@@ -9,6 +9,7 @@ export function Footer() {
             <span className="text-sm">GoPastebin</span>
             <span className="text-xs">v1.0.0</span>
           </div>
+          
           <div>
             <a
               href="https://jirugutema.vercel.app"
@@ -17,7 +18,7 @@ export function Footer() {
               className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
 
-              <span className="text-blue-700">Developer</span>
+              <span className="">About</span>
             </a>
           </div>
           <div className="flex items-center gap-2">

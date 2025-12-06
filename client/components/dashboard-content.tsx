@@ -120,7 +120,6 @@ export function DashboardContent() {
       ) : !pastes || pastes.length === 0 ? (
         <Card className="border-border bg-card">
           <CardContent className="py-12 text-center">
-            <FileCode className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <h2 className="text-xl font-medium text-foreground mb-2">
               No pastes yet
             </h2>
@@ -196,6 +195,28 @@ export function DashboardContent() {
           ))}
         </div>
       )}
+
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">Account Action</h1>
+        </div>
+      </div>
+
+      <div className="border-border bg-card">
+        <div className="py-12 flex gap-1 text-center">
+          <Button asChild>
+            <Link href="/">
+              Logout Account
+            </Link>
+          </Button>
+
+          <Button asChild className="bg-orange-700 hover:bg-orange-500">
+            <Link href="/">
+              Delete Account
+            </Link>
+          </Button>
+        </div>
+      </div>
 
       <Dialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
         <DialogTrigger asChild></DialogTrigger>
