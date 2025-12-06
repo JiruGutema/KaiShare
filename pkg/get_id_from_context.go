@@ -9,6 +9,7 @@ import (
 
 func GetUserIDFromContext(c *gin.Context) (uuid.UUID, error) {
 	userIDValue, exists := c.Get("userID")
+	fmt.Println(exists)
 	if !exists {
 		return uuid.Nil, fmt.Errorf("userID not found in context")
 	}
