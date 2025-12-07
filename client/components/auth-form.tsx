@@ -70,7 +70,7 @@ export function AuthForm({ mode }: AuthFormProps) {
       }
 
       // Refresh session data
-      mutate(`${ApiBaseUrl()}/api/users/mine`);
+      // mutate(`${ApiBaseUrl()}/api/users/mine`);
       router.push("/");
     } catch {
       setError("Failed to connect. Please try again.");

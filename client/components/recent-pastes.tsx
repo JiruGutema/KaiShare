@@ -11,9 +11,8 @@ import { apiFetch } from "@/lib/api";
 
 const fetcher = (url: string) =>
   apiFetch(url)
-    .then((res) => res.json())
-    .then((data) => data.pastes);
-
+    .then((res) => !res.ok ? [] : res.json())
+    .then((data) => data && data.pastes ? data.pastes : []);
 interface Paste {
   id: string;
   title: string;
@@ -24,11 +23,15 @@ interface Paste {
 }
 
 export function RecentPastes() {
-  const { data: pastes, isLoading } = useSWR(`${ApiBaseUrl()}/api/users/me`, fetcher, {
-  revalidateOnFocus: false,
-  revalidateOnReconnect: false,
-  dedupingInterval: Infinity,
-});
+  const { data: pastes, isLoading } = useSWR(
+    `${ApiBaseUrl()}/api/paste/mine`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      dedupingInterval: Infinity,
+    },
+  );
   if (isLoading) {
     return (
       <Card className="border-border bg-card">
@@ -77,7 +80,7 @@ export function RecentPastes() {
       </CardHeader>
       <CardContent>
         <div className="space-y-2 rounded-none">
-          {pastes.map((paste) => (
+          {pastes.map((paste: Paste) => (
             <Link
               key={paste.id}
               href={`/p/${paste.id}`}
