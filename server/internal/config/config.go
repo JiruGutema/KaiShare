@@ -22,16 +22,16 @@ type Config struct {
 // LoadConfig reads environment variables and returns a Config struct
 func LoadConfig() *Config {
 	return &Config{
-		Port:          getEnv("PORT", "8080"),
-		Domain:        getEnv("DOMAIN", "localhost"),
-		DBHost:        getEnv("DB_HOST", "localhost"),
-		DBPort:        getEnv("DB_PORT", "5432"),
-		GoEnv:         getEnv("GO_ENV", "development"),
-		DBUser:        getEnv("DB_USER", "postgres"),
-		DBPassword:    getEnv("DB_PASSWORD", "1441"),
-		DBName:        getEnv("DB_NAME", "gopastebin"),
-		JWTSecret:     getEnv("JWT_SECRET", "supersecret"),
-		RefreshSecret: getEnv("REFRESH_SECRET", "superrefreshsecret"),
+		Port:          getEnv("PORT", ""),
+		Domain:        getEnv("DOMAIN", ""),
+		DBHost:        getEnv("DB_HOST", ""),
+		DBPort:        getEnv("DB_PORT", ""),
+		GoEnv:         getEnv("GO_ENV", ""),
+		DBUser:        getEnv("DB_USER", ""),
+		DBPassword:    getEnv("DB_PASSWORD", ""),
+		DBName:        getEnv("DB_NAME", ""),
+		JWTSecret:     getEnv("JWT_SECRET", ""),
+		RefreshSecret: getEnv("REFRESH_SECRET", ""),
 	}
 }
 
@@ -44,9 +44,18 @@ func getEnv(key string, defaultValue string) string {
 	return value
 }
 
-func ConstructDBString(c *Config) string {
+//	func ConstructDBString(c *Config) string {
+//		return fmt.Sprintf(
+//			"postgres://%s:%s@%s:%s/%s?sslmode=disable",
+//			c.DBUser, c.DBPassword, c.DBHost, c.DBPort, c.DBName,
+//		)
+//	}
+func ConstructDBString(cfg Config) string {
 	return fmt.Sprintf(
-		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
-		c.DBUser, c.DBPassword, c.DBHost, c.DBPort, c.DBName,
+		"postgres://%s:%s@%s/%s?sslmode=require",
+		cfg.DBUser,
+		cfg.DBPassword,
+		cfg.DBHost,
+		cfg.DBName,
 	)
 }

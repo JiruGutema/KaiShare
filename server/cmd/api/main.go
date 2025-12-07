@@ -10,10 +10,8 @@ import (
 )
 
 func main() {
-	fmt.Println("Main thread started!")
-	config.ConnectDatabase()
-
 	e := godotenv.Load()
+	config.ConnectDatabase()
 	if e != nil {
 		log.Fatal("Error loading .env file")
 	}

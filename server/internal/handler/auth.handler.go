@@ -3,6 +3,7 @@ package handler
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -57,6 +58,7 @@ func RegisterHandler(ctx *gin.Context) {
 		return
 	}
 	if err != nil {
+		fmt.Println("Registration error:", err)
 		ctx.JSON(500, gin.H{"error": "Registration failed"})
 		return
 	}
