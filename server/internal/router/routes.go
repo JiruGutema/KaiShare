@@ -14,7 +14,7 @@ func Routes() *gin.Engine {
 	router := gin.Default()
 	// router.Use(pkg.Logger)
 	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://kaishare.vercel.com"}
+	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://kai-share.vercel.app/"}
 	corsConfig.AllowMethods = []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"}
 	corsConfig.AllowHeaders = []string{"Origin", "Content-Type", "Authorization", "Accept", "User-Agent", "Cache-Control", "Pragma"}
 	corsConfig.ExposeHeaders = []string{"Content-Length"}
@@ -26,8 +26,8 @@ func Routes() *gin.Engine {
 	router.GET("/api/ping", handler.PingHandler)
 	router.POST("/api/auth/login", handler.LoginHandler)
 	router.POST("/api/auth/register", handler.RegisterHandler)
-	router.GET("/api/auth/refresh",middleware.AuthMiddleware(), handler.GetAccessToken)
-	router.POST("/api/auth/logout",middleware.AuthMiddleware(), handler.LogoutHandler)
+	router.GET("/api/auth/refresh", middleware.AuthMiddleware(), handler.GetAccessToken)
+	router.POST("/api/auth/logout", middleware.AuthMiddleware(), handler.LogoutHandler)
 
 	// Paste
 	router.POST("/api/paste", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)
