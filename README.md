@@ -1,8 +1,10 @@
-# KaiShare
-
+![KaiShare](assets/KaiShare.png)
 **KaiShare** is a secure platform for sharing code snippets and text with others. Built with a focus on privacy and simplicity, KaiShare helps developers and users exchange information safely—ideal for teams, communities, and individuals working on collaborative coding and knowledge sharing.
 
----
+![Posting](assets/posting.png)
+![Posted](assets/posted.png)
+
+- **Note**- <p style="color:red; font-weight:bold;">If you don't  have an account, don't forget to copy the link (like https://kaishare.vercel.app/p/9913f9-d344-11f0-80bb-8c8d28d905b2) after posting, as there is no way to retrieve it later.</p>
 
 ## Features
 
@@ -12,7 +14,6 @@
 - **Backend in Go**: Robust and scalable backend services powered by [Go](https://golang.org/).
 - **Privacy Focused**: Your shared content is protected, with options for expiry and one-time viewing.
 
----
 
 ## Technology Stack
 

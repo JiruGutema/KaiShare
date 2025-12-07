@@ -4,7 +4,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Lock, Flame, FileCode } from "lucide-react";
+import {  Lock, Flame, FileCode } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { ApiBaseUrl } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
@@ -37,7 +37,6 @@ export function RecentPastes() {
       <Card className="border-border bg-card">
         <CardHeader>
           <CardTitle className="text-lg font-medium text-foreground flex items-center gap-2">
-            <Clock className="h-4 w-4 text-primary" />
             Your Recent Pastes
           </CardTitle>
         </CardHeader>
@@ -60,7 +59,6 @@ export function RecentPastes() {
       <Card className="border-border bg-card">
         <CardHeader>
           <CardTitle className="text-lg font-medium text-foreground flex items-center gap-2">
-            <Clock className="h-4 w-4 text-primary" />
             Your Recent Pastes
           </CardTitle>
         </CardHeader>
@@ -77,7 +75,6 @@ export function RecentPastes() {
     <Card className="border-border bg-card">
       <CardHeader>
         <CardTitle className="text-lg font-medium text-foreground flex items-center gap-2">
-          <Clock className="h-4 w-4 text-primary" />
           Recent Public Pastes
         </CardTitle>
       </CardHeader>
