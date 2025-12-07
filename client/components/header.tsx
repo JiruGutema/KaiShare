@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ApiBaseUrl, HandleLogout } from "@/lib/utils";
+import { ApiBaseUrl, HandleLogout, IsLoggedIn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 import { Session } from "@/lib/types";
@@ -31,7 +31,12 @@ export function Header() {
     const session = GetLocalUser();
     console.log("Header session:", session);
     setSession(session);
+
+    if (!IsLoggedIn() && session) {
+      handleLogout();
+    }
   }, []);
+
   return (
     <header className="border-b border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-3">
