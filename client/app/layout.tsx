@@ -5,7 +5,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Pastera  Share Code & Text Securely",
+  title: "KaiShare | Share Code & Text Securely",
   description:
     "A modern pastebin with syntax highlighting, password protection, burn after read.",
   authors: [{ name: "Jiru Gutema", url: "https://jirugutema.vercel.app" }],
