@@ -12,7 +12,7 @@ export function Footer() {
           
           <div>
             <a
-              href="https://jirugutema.vercel.app"
+              href="/about"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
@@ -23,7 +23,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-2">
             <a
-              href="https://github.com/jirugutema/gopastebin"
+              href="https://github.com/jirugutema/kaishare"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"

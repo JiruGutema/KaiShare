@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { apiFetch } from "./api";
 import { mutate } from "swr";
 import { Router } from "next/router";
+import { Session, User } from "./types";
 
 const isDevelopment = process.env.NEXT_PUBLIC_NODE_ENV === "development";
 export function cn(...inputs: ClassValue[]) {
@@ -42,6 +43,38 @@ export const Logger = {
   },
 };
 
+export function GetLocalUser(): Session | null {
+  if (typeof window === "undefined") return null; // Next.js SSR safe
+  const stored = localStorage.getItem("session");
+  if (!stored) return null;
+
+  try {
+    const user: User = JSON.parse(stored);
+    const session = {
+      user: user,
+    }
+    console.log("Parsed local user:", session);
+    return session;
+  } catch (err) {
+    console.error("Failed to parse user from localStorage", err);
+    return null;
+  }
+}
+
+export function setLocalUser(user: Session): void {
+  if (typeof window === "undefined") return; // SSR safe
+
+  try {
+    localStorage.setItem("session", JSON.stringify(user));
+  } catch (err) {
+    console.error("Failed to save user to localStorage", err);
+  }
+}
+
+export function removeLocalUser(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem("session");
+}
 export const ApiBaseUrl = () => {
   return process.env.NEXT_PUBLIC_SERVER_BASE_URL || "";
 };
@@ -56,6 +89,12 @@ export function IsLoggedIn() {
 }
 
 export async function HandleLogout() {
-  await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST" });
-  mutate(() => true, undefined);
+  const res = await apiFetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST" });
+  if(res.ok){
+    removeLocalUser();
+    return true
+  }
+  else {
+    return false
+  }
 }

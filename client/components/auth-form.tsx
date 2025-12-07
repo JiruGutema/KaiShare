@@ -19,7 +19,7 @@ import {
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { mutate } from "swr";
 import { apiFetch } from "@/lib/api";
-import { ApiBaseUrl, IsLoggedIn } from "@/lib/utils";
+import { ApiBaseUrl, IsLoggedIn, setLocalUser } from "@/lib/utils";
 
 interface AuthFormProps {
   mode: "login" | "register";
@@ -67,6 +67,9 @@ export function AuthForm({ mode }: AuthFormProps) {
       if (!res.ok) {
         setError(data.error || "Something went wrong");
         return;
+      }
+      if (res.ok && data.user) {
+        setLocalUser(data.user);
       }
 
       // Refresh session data

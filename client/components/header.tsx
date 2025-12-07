@@ -11,30 +11,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import useSWR from "swr";
-import { apiFetch } from "@/lib/api";
-import { ApiBaseUrl } from "@/lib/utils";
+import { ApiBaseUrl, HandleLogout } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
-const fetcher = (url: string) => apiFetch(url).then((res) => res.json());
+import { Session } from "@/lib/types";
+import { GetLocalUser } from "@/lib/utils";
 
 export function Header() {
   const pathname = usePathname();
-  const { data: session, mutate } = useSWR(
-    `${ApiBaseUrl()}/api/users/me`,
-    fetcher,
-  );
-
-const handleLogout = async () => {
-  // Call logout API
-  await fetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST", credentials: "include" });
-
-  // Clear SWR cache for user session
-  mutate(`${ApiBaseUrl()}/api/users/me`, false);
-
-  // Optional: redirect to homepage/login
-  window.location.href = "/";
-};
-
+  const [session, setSession] = useState<Session | null>(null);
+  const handleLogout = async () => {
+    // Call logout API
+    const loggedOut = await HandleLogout();
+    if (loggedOut) {
+      window.location.href = "/";
+    }
+  };
+  useEffect(() => {
+    const session = GetLocalUser();
+    console.log("Header session:", session);
+    setSession(session);
+  }, []);
   return (
     <header className="border-b border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-3">
@@ -66,12 +63,13 @@ const handleLogout = async () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard">
-                      User Account
-                    </Link>
+                    <Link href="/dashboard">User Account</Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="text-orange-600 font-bold">
+                  <DropdownMenuItem
+                    onClick={handleLogout}
+                    className="text-orange-600 font-bold"
+                  >
                     Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>

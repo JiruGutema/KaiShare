@@ -1,9 +1,11 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { PasteForm } from "@/components/paste-form"
-import { RecentPastes } from "@/components/recent-pastes"
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { PasteForm } from "@/components/paste-form";
+import { RecentPastes } from "@/components/recent-pastes";
 
 export default function HomePage() {
+
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -14,7 +16,9 @@ export default function HomePage() {
             <h1 className="text-xl font-bold text-foreground mb-2">
               Share Code & Text <span className="text-primary">Securely</span>
             </h1>
-            <p className="text-muted-foreground">Syntax highlighting, password protection, and burn after read</p>
+            <p className="text-muted-foreground">
+              Syntax highlighting, password protection, and burn after read
+            </p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">
@@ -32,7 +36,9 @@ export default function HomePage() {
                   <p className="text-xs text-muted-foreground">Password Lock</p>
                 </div>
                 <div className="rounded-none border border-border bg-card p-4 text-center">
-                  <p className="text-xs text-muted-foreground">Burn After Read</p>
+                  <p className="text-xs text-muted-foreground">
+                    Burn After Read
+                  </p>
                 </div>
                 <div className="rounded-none border border-border bg-card p-4 text-center">
                   <p className="text-xs text-muted-foreground">User Accounts</p>
@@ -45,5 +51,5 @@ export default function HomePage() {
 
       <Footer />
     </div>
-  )
+  );
 }
