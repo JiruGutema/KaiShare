@@ -251,7 +251,7 @@ export function PasteForm() {
           </div>
         </CardContent>
       </Card>
-      {IsLoggedIn() ? (
+      {!IsLoggedIn() ? (
         <p className="text text-primary mb-4">
           <i className="text-orange-700">
             - If you don't have an account, don't forget to copy the link after
