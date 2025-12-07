@@ -1,8 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { apiFetch } from "./api";
-import { mutate } from "swr";
-import { Router } from "next/router";
 import { Session, User } from "./types";
 
 const isDevelopment = process.env.NEXT_PUBLIC_NODE_ENV === "development";
@@ -44,7 +42,7 @@ export const Logger = {
 };
 
 export function GetLocalUser(): Session | null {
-  if (typeof window === "undefined") return null; // Next.js SSR safe
+  if (typeof window === "undefined") return null;
   const stored = localStorage.getItem("session");
   if (!stored) return null;
 
@@ -52,7 +50,7 @@ export function GetLocalUser(): Session | null {
     const user: User = JSON.parse(stored);
     const session = {
       user: user,
-    }
+    };
     console.log("Parsed local user:", session);
     return session;
   } catch (err) {
@@ -62,7 +60,7 @@ export function GetLocalUser(): Session | null {
 }
 
 export function setLocalUser(user: Session): void {
-  if (typeof window === "undefined") return; // SSR safe
+  if (typeof window === "undefined") return;
 
   try {
     localStorage.setItem("session", JSON.stringify(user));
@@ -79,22 +77,25 @@ export const ApiBaseUrl = () => {
   return process.env.NEXT_PUBLIC_SERVER_BASE_URL || "";
 };
 
-export function IsLoggedIn() {
+export function IsLoggedIn(): boolean {
+  if (typeof document === "undefined") return false;
+
   const cookieValue = document.cookie
     .split("; ")
     .find((row) => row.startsWith("logged_in="))
     ?.split("=")[1];
 
-  return cookieValue == "1";
+  return cookieValue === "1";
 }
 
 export async function HandleLogout() {
-  const res = await apiFetch(`${ApiBaseUrl()}/api/auth/logout`, { method: "POST" });
-  if(res.ok){
+  const res = await apiFetch(`${ApiBaseUrl()}/api/auth/logout`, {
+    method: "POST",
+  });
+  if (res.ok) {
     removeLocalUser();
-    return true
-  }
-  else {
-    return false
+    return true;
+  } else {
+    return false;
   }
 }
