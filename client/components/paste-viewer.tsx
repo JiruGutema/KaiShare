@@ -19,9 +19,8 @@ import {
   Calendar,
   Download,
   Trash2,
-  AlertTriangle,
-  Trash,
   Delete,
+  Link,
 } from "lucide-react";
 import {
   Dialog,
@@ -67,7 +66,7 @@ const createFetcher = (password?: string) => async (url: string) => {
     (error as Error & { info: typeof data }).info = data;
     throw error;
   }
-  console.log("data", data.paste)
+  console.log("data", data.paste);
   return data.paste;
 };
 
@@ -76,6 +75,8 @@ export function PasteViewer({ id }: PasteViewerProps) {
   const [password, setPassword] = useState("");
   const [submittedPassword, setSubmittedPassword] = useState<string>();
   const [copied, setCopied] = useState(false);
+
+  const [copiedLink, setCopiedLink] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
@@ -84,9 +85,13 @@ export function PasteViewer({ id }: PasteViewerProps) {
     error,
     isLoading,
     mutate,
-  } = useSWR<Paste>(`${ApiBaseUrl()}/api/paste/${id}`, createFetcher(submittedPassword), {
-    revalidateOnFocus: false,
-  });
+  } = useSWR<Paste>(
+    `${ApiBaseUrl()}/api/paste/${id}`,
+    createFetcher(submittedPassword),
+    {
+      revalidateOnFocus: false,
+    },
+  );
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,33 +103,44 @@ export function PasteViewer({ id }: PasteViewerProps) {
     if (paste?.content) {
       await navigator.clipboard.writeText(paste.content);
       setCopied(true);
+      toast.success("Content copied to clipboard!");
       setTimeout(() => setCopied(false), 2000);
     }
   };
 
-const handleDownload = () => {
-  if (paste) {
-    const ext = LanguageExtensions[paste.language] || "txt";
-    const blob = new Blob([paste.content], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${paste.title || "paste"}.${ext}`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-};
+  const handleCopyLink = async () => {
+    const pasteUrl = `${window.location.origin}/p/${id}`;
+
+    if (pasteUrl) {
+      await navigator.clipboard.writeText(pasteUrl);
+      setCopiedLink(true);
+      toast.success("Link copied to clipboard!");
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const handleDownload = () => {
+    if (paste) {
+      const ext = LanguageExtensions[paste.language] || "txt";
+      const blob = new Blob([paste.content], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${paste.title || "paste"}.${ext}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  };
 
   const handleDelete = async () => {
     setDeleting(true);
     try {
       const res = await HandleDelete(id);
-      if(res == 1){
+      if (res == 1) {
         router.push("/");
-      }
-      else {
+      } else {
         setDeleting(false);
-        setShowLogoutDialog(false)
+        setShowLogoutDialog(false);
         toast.error("You are not authorized to delete this paste.");
       }
     } catch {
@@ -250,6 +266,17 @@ const handleDownload = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" onClick={handleCopyLink}>
+                {copiedLink ? (
+                  <Link className="h-4 w-4" />
+                ) : (
+                  <Link className="h-4 w-4" />
+                )}
+                <span className="ml-1 hidden sm:inline">
+                  {copiedLink ? "Copied!" : "Link"}
+                </span>
+              </Button>
+
               <Button variant="outline" size="sm" onClick={handleCopy}>
                 {copied ? (
                   <Check className="h-4 w-4" />
@@ -257,7 +284,7 @@ const handleDownload = () => {
                   <Copy className="h-4 w-4" />
                 )}
                 <span className="ml-1 hidden sm:inline">
-                  {copied ? "Copied!" : "Copy"}
+                  {copied ? "Copied!" : "Copy Content"}
                 </span>
               </Button>
               <Button variant="outline" size="sm" onClick={handleDownload}>
