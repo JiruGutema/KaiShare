@@ -36,6 +36,7 @@ func LoginHandler(ctx *gin.Context) {
 
 	ctx.SetCookie("access_token", accessToken, 3600, "/", "localhost", false, true)
 	ctx.SetCookie("refresh_token", refreshToken, int((time.Hour * 24 * 7).Seconds()), "/", "localhost", false, true)
+	ctx.SetCookie("logged_in", "1", 3600, "/", "localhost", false, false)
 	ctx.JSON(200, gin.H{
 		"user": loginResponse,
 	})
@@ -71,6 +72,7 @@ func RegisterHandler(ctx *gin.Context) {
 
 	ctx.SetCookie("access_token", accessToken, 3600, "/", "localhost", false, true)
 	ctx.SetCookie("refresh_token", refreshToken, int((time.Hour * 24 * 7).Seconds()), "/", "localhost", false, true)
+	ctx.SetCookie("logged_in", "1", 3600, "/", "localhost", false, false)
 
 	ctx.JSON(200, gin.H{
 		"user": resp,
@@ -98,6 +100,7 @@ func GetAccessToken(ctx *gin.Context) {
 	}
 
 	ctx.SetCookie("access_token", token, 3600, "/", "localhost", false, true)
+	ctx.SetCookie("logged_in", "1", 3600, "/", "localhost", false, false)
 	ctx.JSON(200, gin.H{
 		"success": true,
 	})
