@@ -15,6 +15,7 @@ import { LANGUAGES, EXPIRATION_OPTIONS } from "@/lib/languages"
 import { Lock, Flame, Clock, Globe, Eye, EyeOff, Send } from "lucide-react"
 import { apiFetch } from "@/lib/api"
 import { ApiBaseUrl } from "@/lib/utils"
+import { toast } from "sonner"
 
 export function PasteForm() {
   const router = useRouter()
@@ -43,7 +44,16 @@ export function PasteForm() {
 
       if (res.ok) {
         const data = await res.json()
+        toast.success("Paste created successfully!")
         router.push(`/p/${data.pasteId}`)
+      }
+      else {
+        if(res.status == 500){
+          toast.error("Can't create paste. Internal server error")
+        }
+        else {
+          toast.error("Failed to create paste. Please try again.")
+        }
       }
     } catch (error) {
       console.error("Failed to create paste:", error)

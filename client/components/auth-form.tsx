@@ -41,10 +41,11 @@ export function AuthForm({ mode }: AuthFormProps) {
     setIsAuthenticated(IsLoggedIn());
   }, []);
 
-  if (isAuthenticated) {
-    router.push("/dashboard");
-  }
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/");
+    }
+  }, [isAuthenticated, router]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);

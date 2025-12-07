@@ -4,7 +4,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {  Lock, Flame, FileCode } from "lucide-react";
+import { Lock, Flame, FileCode } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { ApiBaseUrl } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
@@ -24,14 +24,11 @@ interface Paste {
 }
 
 export function RecentPastes() {
-  const { data: pastes, isLoading } = useSWR<Paste[]>(
-    `${ApiBaseUrl()}/api/paste/mine`,
-    fetcher,
-    {
-      refreshInterval: 10000,
-    },
-  );
-
+  const { data: pastes, isLoading } = useSWR(`${ApiBaseUrl()}/api/users/me`, fetcher, {
+  revalidateOnFocus: false,
+  revalidateOnReconnect: false,
+  dedupingInterval: Infinity,
+});
   if (isLoading) {
     return (
       <Card className="border-border bg-card">

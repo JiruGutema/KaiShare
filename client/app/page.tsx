@@ -2,7 +2,6 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { PasteForm } from "@/components/paste-form"
 import { RecentPastes } from "@/components/recent-pastes"
-import { FileCode, Lock, Flame, Users } from "lucide-react"
 
 export default function HomePage() {
   return (
