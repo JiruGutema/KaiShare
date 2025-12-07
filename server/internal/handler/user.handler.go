@@ -34,7 +34,8 @@ func DeleteUserHandler(ctx *gin.Context) {
 		})
 		return
 	}
-	pkg.ClearCookies(ctx)
+	pkg.ClearCookies(ctx, domainHost)
+
 	ctx.JSON(200, gin.H{
 		"success": true,
 		"user":    user,

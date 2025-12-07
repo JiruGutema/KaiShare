@@ -7,26 +7,30 @@ import (
 )
 
 type Config struct {
-	Port       string
-	DBHost     string
-	DBPort     string
-	DBUser     string
-	DBPassword string
-	DBName     string
-	JWTSecret  string
+	Port          string
+	DBHost        string
+	DBPort        string
+	Domain        string
+	DBUser        string
+	DBPassword    string
+	GoEnv         string
+	DBName        string
+	JWTSecret     string
 	RefreshSecret string
 }
 
 // LoadConfig reads environment variables and returns a Config struct
 func LoadConfig() *Config {
 	return &Config{
-		Port:       getEnv("PORT", "8080"),
-		DBHost:     getEnv("DB_HOST", "localhost"),
-		DBPort:     getEnv("DB_PORT", "5432"),
-		DBUser:     getEnv("DB_USER", "postgres"),
-		DBPassword: getEnv("DB_PASSWORD", "1441"),
-		DBName:     getEnv("DB_NAME", "gopastebin"),
-		JWTSecret:  getEnv("JWT_SECRET", "supersecret"),
+		Port:          getEnv("PORT", "8080"),
+		Domain:        getEnv("DOMAIN", "localhost"),
+		DBHost:        getEnv("DB_HOST", "localhost"),
+		DBPort:        getEnv("DB_PORT", "5432"),
+		GoEnv:         getEnv("GO_ENV", "development"),
+		DBUser:        getEnv("DB_USER", "postgres"),
+		DBPassword:    getEnv("DB_PASSWORD", "1441"),
+		DBName:        getEnv("DB_NAME", "gopastebin"),
+		JWTSecret:     getEnv("JWT_SECRET", "supersecret"),
 		RefreshSecret: getEnv("REFRESH_SECRET", "superrefreshsecret"),
 	}
 }

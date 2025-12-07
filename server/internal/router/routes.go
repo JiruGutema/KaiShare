@@ -14,7 +14,7 @@ func Routes() *gin.Engine {
 	router := gin.Default()
 	// router.Use(pkg.Logger)
 	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://kai-share.vercel.app/"}
+	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://kai-share.vercel.app"}
 	corsConfig.AllowMethods = []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"}
 	corsConfig.AllowHeaders = []string{"Origin", "Content-Type", "Authorization", "Accept", "User-Agent", "Cache-Control", "Pragma"}
 	corsConfig.ExposeHeaders = []string{"Content-Length"}
