@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Plus, User, LogOut, MoonStar } from "lucide-react";
+import { Plus, User, MoonStar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ApiBaseUrl, HandleLogout, IsLoggedIn } from "@/lib/utils";
+import { HandleLogout, IsLoggedIn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 import { Session } from "@/lib/types";
@@ -29,7 +29,6 @@ export function Header() {
   };
   useEffect(() => {
     const session = GetLocalUser();
-    console.log("Header session:", session);
     setSession(session);
 
     if (!IsLoggedIn() && session) {

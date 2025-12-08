@@ -51,7 +51,6 @@ export function GetLocalUser(): Session | null {
     const session = {
       user: user,
     };
-    console.log("Parsed local user:", session);
     return session;
   } catch (err) {
     console.error("Failed to parse user from localStorage", err);

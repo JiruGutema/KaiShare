@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LANGUAGES, EXPIRATION_OPTIONS } from "@/lib/languages";
-import { Lock, Flame, Clock, Globe, Eye, EyeOff, Send } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { apiFetch } from "@/lib/api";
 import { ApiBaseUrl, IsLoggedIn } from "@/lib/utils";
 import { toast } from "sonner";

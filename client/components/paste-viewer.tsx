@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
@@ -34,16 +33,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { formatDistanceToNow } from "date-fns";
-import { ApiBaseUrl, HandleDelete } from "@/lib/utils";
+import {  HandleDelete } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
 import { LanguageExtensions } from "@/lib/languages";
-import { Toaster } from "./ui/sonner";
 import { toast } from "sonner";
 
 interface PasteViewerProps {
   id: string;
 }
-
 interface Paste {
   id: string;
   title: string;
@@ -58,15 +55,16 @@ interface Paste {
 }
 
 const createFetcher = (password?: string) => async (url: string) => {
-  const res = await apiFetch(url);
-
+  const finalString = password
+    ? url + "?password=" + password
+    : url + "?password=''";
+  const res = await apiFetch(finalString);
   const data = await res.json();
   if (!res.ok) {
     const error = new Error(data.error || "Failed to fetch");
-    (error as Error & { info: typeof data }).info = data;
+    (error as Error & { info: typeof data }).info = data.paste;
     throw error;
   }
-  console.log("data", data.paste);
   return data.paste;
 };
 
@@ -75,7 +73,6 @@ export function PasteViewer({ id }: PasteViewerProps) {
   const [password, setPassword] = useState("");
   const [submittedPassword, setSubmittedPassword] = useState<string>();
   const [copied, setCopied] = useState(false);
-
   const [copiedLink, setCopiedLink] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
@@ -84,19 +81,18 @@ export function PasteViewer({ id }: PasteViewerProps) {
     data: paste,
     error,
     isLoading,
-    mutate,
-  } = useSWR<Paste>(
-    `${ApiBaseUrl()}/api/paste/${id}`,
-    createFetcher(submittedPassword),
+  } = useSWR(
+    [`/api/paste/${id}`, submittedPassword],
+    ([url, pwd]) => createFetcher(pwd)(url),
     {
       revalidateOnFocus: false,
+      shouldRetryOnError: false,
     },
   );
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmittedPassword(password);
-    mutate();
   };
 
   const handleCopy = async () => {
@@ -110,12 +106,11 @@ export function PasteViewer({ id }: PasteViewerProps) {
 
   const handleCopyLink = async () => {
     const pasteUrl = `${window.location.origin}/p/${id}`;
-
     if (pasteUrl) {
       await navigator.clipboard.writeText(pasteUrl);
       setCopiedLink(true);
       toast.success("Link copied to clipboard!");
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopiedLink(false), 2000);
     }
   };
 
@@ -220,7 +215,6 @@ export function PasteViewer({ id }: PasteViewerProps) {
   }
 
   if (!paste) return null;
-
   const lines = paste.content.split("\n");
 
   return (
@@ -308,7 +302,7 @@ export function PasteViewer({ id }: PasteViewerProps) {
         <CardContent className="p-0">
           <div className="flex">
             <div className="shrink-0 select-none border-r border-border bg-secondary/50 px-3 py-4 text-right font-mono text-xs text-muted-foreground">
-              {lines.map((_, i) => (
+              {lines.map((_: string, i: number) => (
                 <div key={i} className="leading-6">
                   {i + 1}
                 </div>
