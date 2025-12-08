@@ -19,7 +19,6 @@ type Config struct {
 	RefreshSecret string
 }
 
-// LoadConfig reads environment variables and returns a Config struct
 func LoadConfig() *Config {
 	return &Config{
 		Port:          getEnv("PORT", ""),
@@ -35,7 +34,6 @@ func LoadConfig() *Config {
 	}
 }
 
-// getEnv reads an env variable or returns default
 func getEnv(key string, defaultValue string) string {
 	value := os.Getenv(key)
 	if value == "" {
@@ -44,12 +42,6 @@ func getEnv(key string, defaultValue string) string {
 	return value
 }
 
-//	func ConstructDBString(c *Config) string {
-//		return fmt.Sprintf(
-//			"postgres://%s:%s@%s:%s/%s?sslmode=disable",
-//			c.DBUser, c.DBPassword, c.DBHost, c.DBPort, c.DBName,
-//		)
-//	}
 func ConstructDBString(cfg Config) string {
 	return fmt.Sprintf(
 		"postgres://%s:%s@%s/%s?sslmode=require",

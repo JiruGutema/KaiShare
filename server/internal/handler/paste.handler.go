@@ -42,6 +42,8 @@ func CreatePasteHandler(ctx *gin.Context) {
 
 func GetPasteHandler(ctx *gin.Context) {
 	pasteID, err := uuid.Parse(ctx.Param("id"))
+	pastePassword := ctx.Query("password")
+
 	if err != nil {
 		ctx.JSON(400, gin.H{"error": "Error getting paste id"})
 		return
@@ -50,13 +52,26 @@ func GetPasteHandler(ctx *gin.Context) {
 
 	if errors.Is(err, service.ErrPasteExpired) {
 
-		ctx.JSON(400, gin.H{"error": err.Error()})
+		ctx.JSON(400, gin.H{"error": "This paste has been expired"})
 		return
 	}
 	if err != nil {
 		ctx.JSON(400, gin.H{"error": "Error retrieving paste"})
 		fmt.Println(err)
 		return
+	}
+
+	if paste.Password != nil {
+
+		match := pkg.ComparePasswordHash(pastePassword, *paste.Password)
+
+		if !match {
+			emptyPasteResponse := dto.PasteResponse{}
+			emptyPasteResponse.RequiresPassword = true
+			ctx.JSON(401, gin.H{"error": "wrong password is provided for the paste", "paste": emptyPasteResponse})
+			fmt.Println(err)
+			return
+		}
 	}
 
 	ctx.JSON(200, gin.H{
