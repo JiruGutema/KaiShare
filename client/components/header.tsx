@@ -21,19 +21,20 @@ export function Header() {
   const pathname = usePathname();
   const [session, setSession] = useState<Session | null>(null);
   const handleLogout = async () => {
-    // Call logout API
     const loggedOut = await HandleLogout();
     if (loggedOut) {
       window.location.href = "/";
     }
   };
+
   useEffect(() => {
     const session = GetLocalUser();
     setSession(session);
-
-    if (!IsLoggedIn() && session) {
-      handleLogout();
-    }
+    async () => {
+      if (!session || !(await IsLoggedIn())) {
+        handleLogout();
+      }
+    };
   }, []);
 
   return (

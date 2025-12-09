@@ -76,23 +76,36 @@ export const ApiBaseUrl = () => {
   return process.env.NEXT_PUBLIC_SERVER_BASE_URL || "";
 };
 
-export function IsLoggedIn(): boolean {
-  if (typeof document === "undefined") return false;
+export async function IsLoggedIn() {
+  try {
+    const res = await apiFetch(`${ApiBaseUrl()}/api/auth/check`);
 
-  const cookieValue = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("logged_in="))
-    ?.split("=")[1];
-
-  return cookieValue === "1";
+    if (!res.ok) {
+      removeLocalUser();
+      return false;
+    }
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 export async function HandleLogout() {
-  const res = await apiFetch(`${ApiBaseUrl()}/api/auth/logout`, {
-    method: "POST",
-  });
-  if (res.ok) {
-    removeLocalUser();
+  removeLocalUser();
+  let loggedOut = false;
+  if (await IsLoggedIn()) {
+    const res = await apiFetch(`${ApiBaseUrl()}/api/auth/logout`, {
+      method: "POST",
+    });
+
+    if (res.ok) {
+      loggedOut = true;
+    } else {
+      loggedOut = false;
+    }
+  }
+
+  if (loggedOut) {
     return true;
   } else {
     return false;

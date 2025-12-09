@@ -26,7 +26,25 @@ export async function apiFetch(
     fetchOptions.body = JSON.stringify(options.body);
   }
 
-  const res = await fetch(url, fetchOptions);
+  let res = await fetch(url, fetchOptions);
+
+  if (res.status === 401) {
+    const data = await res
+      .clone()
+      .json()
+      .catch(() => null);
+
+    if (data?.error === "token_invalid" || data?.error === "token_expired") {
+      const refresh = await fetch(`${ApiBaseUrl()}/api/auth/refresh`, {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (refresh.ok) {
+        res = await fetch(url, fetchOptions);
+      }
+    }
+  }
 
   return res;
 }

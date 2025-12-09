@@ -22,9 +22,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { apiFetch } from "@/lib/api";
 import { ApiBaseUrl, IsLoggedIn } from "@/lib/utils";
 import { toast } from "sonner";
+import { useAuth } from "./auth-provider";
 
 export function PasteForm() {
   const router = useRouter();
+  const {loggedIn, authLoading} = useAuth()
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -65,6 +67,8 @@ export function PasteForm() {
       setLoading(false);
     }
   };
+
+  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 ">
@@ -251,7 +255,7 @@ export function PasteForm() {
           </div>
         </CardContent>
       </Card>
-      {!IsLoggedIn() ? (
+      { !loggedIn || authLoading? (
         <p className="text text-primary mb-4">
           <i className="text-orange-700">
             - If you don't have an account, don't forget to copy the link after

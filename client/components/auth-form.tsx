@@ -17,35 +17,29 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
-import { mutate } from "swr";
 import { apiFetch } from "@/lib/api";
-import { ApiBaseUrl, IsLoggedIn, setLocalUser } from "@/lib/utils";
-
+import { ApiBaseUrl, setLocalUser } from "@/lib/utils";
+import { useAuth } from "./auth-provider";
 interface AuthFormProps {
   mode: "login" | "register";
 }
 
 export function AuthForm({ mode }: AuthFormProps) {
+  const { loggedIn, authLoading } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
   });
-
   useEffect(() => {
-    setIsAuthenticated(IsLoggedIn());
-  }, []);
-
-  useEffect(() => {
-    if (isAuthenticated) {
+    if (loggedIn) {
       router.push("/");
     }
-  }, [isAuthenticated, router]);
+  }, [router, loggedIn]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);

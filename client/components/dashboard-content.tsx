@@ -5,7 +5,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Plus,
@@ -18,7 +18,12 @@ import {
   Calendar,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
-import { ApiBaseUrl, HandleDelete } from "@/lib/utils";
+import {
+  ApiBaseUrl,
+  GetLocalUser,
+  HandleDelete,
+  IsLoggedIn,
+} from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
 import { toast } from "sonner";
 import {
@@ -30,8 +35,7 @@ import {
   DialogTrigger,
 } from "@radix-ui/react-dialog";
 import { DialogFooter, DialogHeader } from "./ui/dialog";
-
-const sessionFetcher = (url: string) => apiFetch(url).then((res) => res.json());
+import { useAuth } from "./auth-provider";
 
 const pastesFetcher = (url: string) =>
   apiFetch(url)
@@ -50,23 +54,29 @@ interface Paste {
 }
 
 export function DashboardContent() {
+  const {loggedIn, authLoading} = useAuth();
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
   const [toBeDeleted, setToBeDeleted] = useState<string | null>(null);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
-  const { data: session, isLoading: sessionLoading } = useSWR(
-    `${ApiBaseUrl()}/api/users/me`,
-    sessionFetcher,
-  );
+  const [session, setSession] = useState<any>(null);
+  const [sessionLoading, setSessionLoading] = useState(true);
 
   const {
     data: pastes,
     isLoading: pastesLoading,
     mutate,
   } = useSWR<Paste[]>(
-    session?.user ? `${ApiBaseUrl()}/api/paste/mine` : null,
+    loggedIn && !authLoading ? `${ApiBaseUrl()}/api/paste/mine` : null,
     pastesFetcher,
   );
+
+  useEffect(() => {
+    const session = GetLocalUser();
+    setSession(session);
+    setSessionLoading(false);
+  }, []);
+
   const handleDelete = async () => {
     setDeleting(true);
     try {
@@ -74,16 +84,18 @@ export function DashboardContent() {
       if (res == 1) {
         mutate(
           pastes?.filter((paste) => paste.id !== toBeDeleted),
-          false, // don't revalidate
+          false,
         );
 
         setShowLogoutDialog(false);
+        setDeleting(false);
       } else {
         setDeleting(false);
         toast.error("You are not authorized to delete this paste.");
       }
     } catch {
       setDeleting(false);
+      setShowLogoutDialog(false);
     }
   };
 
@@ -205,15 +217,11 @@ export function DashboardContent() {
       <div className="border-border bg-card">
         <div className="py-12 flex gap-1 text-center">
           <Button asChild>
-            <Link href="/">
-              Logout Account
-            </Link>
+            <Link href="/">Logout Account</Link>
           </Button>
 
           <Button asChild className="bg-orange-700 hover:bg-orange-500">
-            <Link href="/">
-              Delete Account
-            </Link>
+            <Link href="/">Delete Account</Link>
           </Button>
         </div>
       </div>

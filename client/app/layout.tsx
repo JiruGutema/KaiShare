@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { AuthProvider } from "@/components/auth-provider";
 
 export const metadata: Metadata = {
   title: "KaiShare | Share Code & Text Securely",
@@ -38,9 +39,11 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        {children}
-        <Analytics />
-        <Toaster position="bottom-right" />
+        <AuthProvider>
+          {children}
+          <Analytics />
+          <Toaster position="bottom-right" />
+        </AuthProvider>
       </body>
     </html>
   );

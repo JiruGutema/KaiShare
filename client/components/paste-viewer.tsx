@@ -33,7 +33,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { formatDistanceToNow } from "date-fns";
-import {  HandleDelete } from "@/lib/utils";
+import { HandleDelete } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
 import { LanguageExtensions } from "@/lib/languages";
 import { toast } from "sonner";
@@ -166,6 +166,7 @@ export function PasteViewer({ id }: PasteViewerProps) {
         }
       ).info
     : null;
+  console.log("error: ", errorInfo)
 
   if (errorInfo?.requiresPassword) {
     return (
