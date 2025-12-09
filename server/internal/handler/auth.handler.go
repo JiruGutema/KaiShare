@@ -38,7 +38,7 @@ func LoginHandler(ctx *gin.Context) {
 	}
 
 	pkg.SetAuthCookie(ctx, "access_token", accessToken, domainHost, 3600, true)
-	pkg.SetAuthCookie(ctx, "refresh_token", refreshToken, domainHost, int((time.Hour*24*7).Seconds()), true)
+	pkg.SetAuthCookie(ctx, "refresh_token", refreshToken, domainHost, int((time.Hour * 24 * 7).Seconds()), true)
 	pkg.SetAuthCookie(ctx, "logged_in", "1", domainHost, 3600, false)
 
 	ctx.JSON(200, gin.H{"user": loginResp})
@@ -64,7 +64,7 @@ func RegisterHandler(ctx *gin.Context) {
 	}
 
 	pkg.SetAuthCookie(ctx, "access_token", accessToken, domainHost, 3600, true)
-	pkg.SetAuthCookie(ctx, "refresh_token", refreshToken, domainHost, int((time.Hour*24*7).Seconds()), true)
+	pkg.SetAuthCookie(ctx, "refresh_token", refreshToken, domainHost, int((time.Hour * 24 * 7).Seconds()), true)
 	pkg.SetAuthCookie(ctx, "logged_in", "1", domainHost, 3600, false)
 
 	ctx.JSON(200, gin.H{"user": res})
@@ -98,5 +98,9 @@ func GetAccessToken(ctx *gin.Context) {
 
 func LogoutHandler(ctx *gin.Context) {
 	pkg.ClearCookies(ctx, domainHost)
+	ctx.JSON(200, gin.H{"success": true})
+}
+
+func PingMe(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{"success": true})
 }

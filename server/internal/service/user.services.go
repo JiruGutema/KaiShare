@@ -6,7 +6,6 @@ import (
 	"github.com/jirugutema/kaishare/internal/repository"
 )
 
-
 func DeleteUser(userID uuid.UUID) (dto.User, error) {
 	user, _, err := repository.GetUserByID(userID)
 	if err != nil {

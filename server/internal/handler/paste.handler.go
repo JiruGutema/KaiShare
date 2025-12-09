@@ -68,7 +68,7 @@ func GetPasteHandler(ctx *gin.Context) {
 		if !match {
 			emptyPasteResponse := dto.PasteResponse{}
 			emptyPasteResponse.RequiresPassword = true
-			ctx.JSON(401, gin.H{"error": "wrong password is provided for the paste", "paste": emptyPasteResponse})
+			ctx.JSON(400, gin.H{"error": "wrong password is provided for the paste", "paste": emptyPasteResponse})
 			fmt.Println(err)
 			return
 		}

@@ -26,8 +26,9 @@ func Routes() *gin.Engine {
 	router.GET("/api/ping", handler.PingHandler)
 	router.POST("/api/auth/login", handler.LoginHandler)
 	router.POST("/api/auth/register", handler.RegisterHandler)
-	router.GET("/api/auth/refresh", middleware.AuthMiddleware(), handler.GetAccessToken)
+	router.GET("/api/auth/refresh", middleware.GetAccessTokenMiddleware(), handler.GetAccessToken)
 	router.POST("/api/auth/logout", middleware.AuthMiddleware(), handler.LogoutHandler)
+	router.GET("/api/auth/check", middleware.AuthMiddleware(), handler.PingMe)
 
 	// Paste
 	router.POST("/api/paste", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)

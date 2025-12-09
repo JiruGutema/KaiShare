@@ -11,7 +11,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		tokenStr, err := c.Cookie("access_token")
 		if err != nil {
 
-			c.JSON(401, gin.H{"error": "invalid token"})
+			c.JSON(401, gin.H{"error": "invalid_token"})
 			c.Abort()
 			return
 
@@ -19,7 +19,7 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		token, err := pkg.ValidateJWT(tokenStr)
 		if err != nil || !token.Valid {
-			c.JSON(401, gin.H{"error": "Unauthorized access"})
+			c.JSON(401, gin.H{"error": "invalid_token"})
 			c.Abort()
 			return
 		}
@@ -27,6 +27,25 @@ func AuthMiddleware() gin.HandlerFunc {
 		claims := pkg.GetClaims(token)
 		c.Set("userID", claims["userID"])
 
+		c.Next()
+	}
+}
+
+func GetAccessTokenMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		tokenStr, err := c.Cookie("refresh_token")
+		if err != nil {
+			c.JSON(401, gin.H{"error": "invalid token"})
+			c.Abort()
+			return
+
+		}
+		token, err := pkg.ValidateRefreshToken(tokenStr)
+		if err != nil || !token.Valid {
+			c.JSON(401, gin.H{"error": "Unauthorized access"})
+			c.Abort()
+			return
+		}
 
 		c.Next()
 	}

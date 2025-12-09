@@ -34,15 +34,16 @@ func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
 			return uuid.Nil, ErrUserNotExist
 		}
 	}
+
 	if paste.Password != nil {
 		hashedPassword, err := pkg.HashPassword(*paste.Password)
 		if err != nil {
 			return uuid.Nil, err
 		}
-
 		paste.Password = &hashedPassword
+	} else {
+		paste.Password = nil
 	}
-
 	if err := repository.CreatePaste(paste); err != nil {
 		return uuid.Nil, err
 	}

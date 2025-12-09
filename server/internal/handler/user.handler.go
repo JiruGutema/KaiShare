@@ -30,7 +30,7 @@ func DeleteUserHandler(ctx *gin.Context) {
 	}
 	if err != nil {
 		ctx.JSON(400, gin.H{
-			"error": "Unable to delete user!",
+			"error": "error while deleting the user",
 		})
 		return
 	}
@@ -64,5 +64,3 @@ func GetMeHandler(ctx *gin.Context) {
 		"user":    user,
 	})
 }
-
-
