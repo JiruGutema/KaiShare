@@ -33,9 +33,12 @@ func NotificationUserExists(userID uuid.UUID) (bool, error) {
 	return exists, err
 }
 
-func DeleteNotification(notificationID uuid.UUID) (bool, error){
+func DeleteNotification(notificationID uuid.UUID) (bool, error) {
 	query := "DELETE FROM notifications WHERE id=$1"
-	res, err := config.DB.Exec(query, notificationID)
+	_, err := config.DB.Exec(query, notificationID)
+	if err != nil {
+		return false, err
+	}
 
-	return res, err
+	return true, err
 }

@@ -35,7 +35,7 @@ func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
 		}
 	}
 
-	if paste.Password != nil {
+	if paste.Password != nil && *paste.Password != "" {
 		hashedPassword, err := pkg.HashPassword(*paste.Password)
 		if err != nil {
 			return uuid.Nil, err
