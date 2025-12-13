@@ -29,6 +29,7 @@ func Routes() *gin.Engine {
 	router.GET("/api/auth/refresh", middleware.GetAccessTokenMiddleware(), handler.GetAccessToken)
 	router.POST("/api/auth/logout", middleware.AuthMiddleware(), handler.LogoutHandler)
 	router.GET("/api/auth/check", middleware.AuthMiddleware(), handler.PingMe)
+	router.GET("/api/auth/inject", middleware.InjectUserInformationFromParsedToken(), handler.GetMeHandler)
 
 	// Paste
 	router.POST("/api/paste", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)

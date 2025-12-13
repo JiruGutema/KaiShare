@@ -140,6 +140,7 @@ Returns a list of pastes created by the authenticated user.
     "userId": "b7346fc0-d340-11f0-9940-8c8d28d905b2",
     "isPublic": true
   }
+
     ]
   success: true
   ...

@@ -1,27 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"log"
-
-	"github.com/jirugutema/kaishare/internal/config"
-	routes "github.com/jirugutema/kaishare/internal/router"
-	"github.com/joho/godotenv"
+	"github.com/fatih/color"
+	"github.com/jirugutema/kaishare/internal/server"
 )
 
 func main() {
-	e := godotenv.Load()
-	config.ConnectDatabase()
-	if e != nil {
-		log.Fatal("Error loading .env file")
-	}
-
-	c := config.LoadConfig()
-
-	r := routes.Routes()
-
-	err := r.Run(fmt.Sprintf(":%s", c.Port))
-	if err != nil {
-		fmt.Println("Error starting server:", err)
-	}
+	color.Cyan("Server Starting...")
+	server.StartServer()
 }

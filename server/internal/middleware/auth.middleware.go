@@ -50,3 +50,26 @@ func GetAccessTokenMiddleware() gin.HandlerFunc {
 		c.Next()
 	}
 }
+
+func InjectUserInformationFromParsedToken() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		tokenStr, err := c.Cookie("access_token")
+		if err != nil {
+			c.JSON(401, gin.H{"error": "invalid_token"})
+			c.Abort()
+			return
+		}
+		token, err := pkg.ValidateJWT(tokenStr)
+		if err != nil || !token.Valid {
+			c.JSON(401, gin.H{"error": "invalid_token"})
+			c.Abort()
+			return
+	}
+
+		claims := pkg.GetClaims(token)
+		c.Set("userID", claims["userID"])
+		c.Set("userInjected", true)
+
+		c.Next()
+	}
+}

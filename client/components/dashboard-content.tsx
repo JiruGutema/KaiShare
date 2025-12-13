@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Plus,
-  FileCode,
   Lock,
   Flame,
   Globe,
@@ -22,7 +21,6 @@ import {
   ApiBaseUrl,
   GetLocalUser,
   HandleDelete,
-  IsLoggedIn,
 } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
 import { toast } from "sonner";
