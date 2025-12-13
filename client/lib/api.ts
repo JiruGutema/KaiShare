@@ -26,7 +26,6 @@ export async function apiFetch(
     fetchOptions.body = JSON.stringify(options.body);
   }
   
-  console.log("body: ",fetchOptions.body);
   let res = await fetch(url, fetchOptions);
 
   if (res.status === 401) {
