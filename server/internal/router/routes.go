@@ -2,16 +2,42 @@
 package routes
 
 import (
+	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/jirugutema/kaishare/internal/handler"
 	"github.com/jirugutema/kaishare/internal/middleware"
 )
 
+var IsProd = os.Getenv("GO_ENV") == "production"
+
 func Routes() *gin.Engine {
 	router := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
+	store := cookie.NewStore([]byte("secret")) 
+	if IsProd {
+		store.Options(sessions.Options{
+			Path:     "localhost",
+			MaxAge:   3600,
+			HttpOnly: true,
+			Secure:   true,
+			SameSite: http.SameSiteNoneMode,
+		})
+	} else {
+		store.Options(sessions.Options{
+			Path:     "localhost",
+			MaxAge:   3600,
+			HttpOnly: true,
+			Secure:   false,               
+			SameSite: http.SameSiteLaxMode,
+		})
+	}
+	router.Use(sessions.Sessions("unlockedpastes", store))
 	// router.Use(pkg.Logger)
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://kai-share.vercel.app"}
@@ -33,7 +59,7 @@ func Routes() *gin.Engine {
 
 	// Paste
 	router.POST("/api/paste", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)
-	router.GET("/api/paste/:id", handler.GetPasteHandler)
+	router.GET("/api/paste/:id", middleware.InjectOptionalUserID(), handler.GetPasteHandler)
 	router.GET("/api/paste/mine", middleware.AuthMiddleware(), handler.GetMyPastesHandler)
 	router.DELETE("/api/paste/:id", middleware.AuthMiddleware(), handler.DeletePasteHandler)
 

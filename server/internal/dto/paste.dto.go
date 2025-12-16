@@ -34,4 +34,4 @@ type PasteResponse struct {
 	RequiresPassword bool       `json:"requiresPassword"`
 }
 
-type MyPastesDTO []PasteDTO
+type MyPastesDTO []PasteResponse

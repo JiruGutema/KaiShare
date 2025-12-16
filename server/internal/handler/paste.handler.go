@@ -42,41 +42,45 @@ func CreatePasteHandler(ctx *gin.Context) {
 
 func GetPasteHandler(ctx *gin.Context) {
 	pasteID, err := uuid.Parse(ctx.Param("id"))
-	pastePassword := ctx.Query("password")
-
 	if err != nil {
 		ctx.JSON(400, gin.H{"error": "Error getting paste id"})
 		return
 	}
-	paste, err := service.GetPasteService(pasteID)
 
+	userID, _ := pkg.GetUUIDFromGinContextParam(ctx, "userID")
+
+	UID := userID.String()
+	PID := pasteID.String()
+	pastePassword := ctx.Query("password")
+	unlockedPaste, _ := ctx.Cookie(UID)
+
+	unlocked := false
+	unlocked = unlockedPaste == pasteID.String() && UID != "00000000-0000-0000-0000-000000000000"
+	fmt.Println("unlocked", unlocked)
+
+	paste, err := service.GetPasteService(pasteID, pastePassword, unlocked)
 	if errors.Is(err, service.ErrPasteExpired) {
-
 		ctx.JSON(400, gin.H{"error": "This paste has been expired"})
 		return
 	}
 	if err != nil {
+
+		if errors.Is(err, service.ErrWrongPassword) {
+
+			ctx.JSON(400, gin.H{"error": "wrong password is provided for the paste", "paste": paste})
+			fmt.Println(err)
+			return
+		}
+
 		ctx.JSON(400, gin.H{"error": "Error retrieving paste"})
 		fmt.Println(err)
 		return
 	}
 
-	if paste.Password != nil {
-
-		match := pkg.ComparePasswordHash(pastePassword, *paste.Password)
-
-		if !match {
-			emptyPasteResponse := dto.PasteResponse{}
-			emptyPasteResponse.RequiresPassword = true
-			ctx.JSON(400, gin.H{"error": "wrong password is provided for the paste", "paste": emptyPasteResponse})
-			fmt.Println(err)
-			return
-		}
+	if UID != "00000000-0000-0000-0000-000000000000" {
+		pkg.SetAuthCookie(ctx, UID, PID, domainHost, 900, true)
 	}
-
-	ctx.JSON(200, gin.H{
-		"paste": paste,
-	})
+	ctx.JSON(200, gin.H{"paste": paste})
 }
 
 func GetMyPastesHandler(ctx *gin.Context) {

@@ -14,6 +14,7 @@ var (
 	ErrUserNotExist    = errors.New("user does not exist")
 	ErrPasteExpired    = errors.New("paste has expired")
 	ErrCantDeletePaste = errors.New("unauthorized access to delete paste")
+	ErrWrongPassword   = errors.New("wrong password is provided for the paste")
 )
 
 func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
@@ -51,12 +52,21 @@ func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
 	return paste.ID, nil
 }
 
-func GetPasteService(pasteID uuid.UUID) (dto.PasteDTO, error) {
+func GetPasteService(pasteID uuid.UUID, password string, unlocked bool) (dto.PasteResponse, error) {
 	res, err := repository.GetPaste(pasteID)
+	paste := dto.PasteResponse{}
+
 	if err != nil {
-		return res, err
+		return paste, err
 	}
 
+	if res.Password != nil && !unlocked {
+		match := pkg.ComparePasswordHash(password, *res.Password)
+		if !match {
+			paste.RequiresPassword = true
+			return paste, ErrWrongPassword
+		}
+	}
 	_ = repository.IncrementViews(pasteID)
 
 	if res.BurnAfterRead {
@@ -64,10 +74,22 @@ func GetPasteService(pasteID uuid.UUID) (dto.PasteDTO, error) {
 	}
 
 	if res.ExpiresAt != nil && res.ExpiresAt.Before(time.Now()) {
-		return dto.PasteDTO{}, ErrPasteExpired
+		_ = repository.DeletePaste(pasteID)
+		return dto.PasteResponse{}, ErrPasteExpired
 	}
 
-	return res, nil
+	paste.ID = res.ID
+	paste.Title = res.Title
+	paste.Content = res.Content
+	paste.Language = res.Language
+	paste.BurnAfterRead = res.BurnAfterRead
+	paste.ExpiresAt = res.ExpiresAt
+	paste.CreatedAt = res.CreatedAt
+	paste.Views = res.Views
+	paste.UserID = res.UserID
+	paste.IsPublic = res.IsPublic
+
+	return paste, nil
 }
 
 func GetMyPastesService(userID uuid.UUID) (dto.MyPastesDTO, error) {
@@ -91,4 +113,8 @@ func DeletePasteService(pasteID uuid.UUID, userID uuid.UUID) error {
 
 	e := repository.DeletePaste(pasteID)
 	return e
+}
+
+func UnlockPasteService(pasteID uuid.UUID, userID uuid.UUID, unlockedPasteID uuid.UUID) (dto.PasteDTO, error) {
+	return dto.PasteDTO{}, nil
 }

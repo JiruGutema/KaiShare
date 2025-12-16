@@ -9,6 +9,7 @@ import (
 	"github.com/jirugutema/kaishare/internal/repository"
 	"github.com/jirugutema/kaishare/pkg"
 )
+
 var (
 	ErrUserExists      = errors.New("user already exists")
 	ErrIDGenerating    = errors.New("couldn't generate unique id")
@@ -97,4 +98,3 @@ func GetAccessTokenService(refreshToken string) (string, error) {
 
 	return pkg.GenerateJWT(userID)
 }
-

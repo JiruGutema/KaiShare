@@ -72,14 +72,14 @@ func PasteUserExists(userID uuid.UUID) (bool, error) {
 
 func GetMyPastes(userID uuid.UUID) (dto.MyPastesDTO, error) {
 	var myPastes dto.MyPastesDTO
-	query := "SELECT id, title, content, user_id, created_at, expires_at, password, language, burn_after_read, views, is_public  FROM pastes where user_id = $1"
+	query := "SELECT id, title, content, user_id, created_at, expires_at, language, burn_after_read, views, is_public  FROM pastes where user_id = $1"
 	rows, err := config.DB.Query(query, userID)
 	if err != nil {
 		return myPastes, err
 	}
 
 	for rows.Next() {
-		var paste dto.PasteDTO
+		var paste dto.PasteResponse
 		err := rows.Scan(
 			&paste.ID,
 			&paste.Title,
@@ -87,7 +87,6 @@ func GetMyPastes(userID uuid.UUID) (dto.MyPastesDTO, error) {
 			&paste.UserID,
 			&paste.CreatedAt,
 			&paste.ExpiresAt,
-			&paste.Password,
 			&paste.Language,
 			&paste.BurnAfterRead,
 			&paste.Views,
@@ -96,6 +95,7 @@ func GetMyPastes(userID uuid.UUID) (dto.MyPastesDTO, error) {
 		if err != nil {
 			return myPastes, err
 		}
+
 		myPastes = append(myPastes, paste)
 	}
 	defer rows.Close()

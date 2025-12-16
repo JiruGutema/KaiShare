@@ -8,6 +8,7 @@ import (
 
 type Config struct {
 	Port          string
+	GinMode       string
 	DBHost        string
 	DBPort        string
 	Domain        string
@@ -23,6 +24,7 @@ func LoadConfig() *Config {
 	return &Config{
 		Port:          getEnv("PORT", ""),
 		Domain:        getEnv("DOMAIN", ""),
+		GinMode:       getEnv("GIN_MODE ", ""),
 		DBHost:        getEnv("DB_HOST", ""),
 		DBPort:        getEnv("DB_PORT", ""),
 		GoEnv:         getEnv("GO_ENV", ""),
