@@ -7,21 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import {
-  Plus,
-  Lock,
-  Flame,
-  Globe,
-  Eye,
-  Trash2,
-  Calendar,
-} from "lucide-react";
+import { Plus, Lock, Flame, Globe, Eye, Trash2, Calendar } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
-import {
-  ApiBaseUrl,
-  GetLocalUser,
-  HandleDelete,
-} from "@/lib/utils";
+import { ApiBaseUrl, GetLocalUser, HandleDelete } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
 import { toast } from "sonner";
 import {
@@ -34,6 +22,7 @@ import {
 } from "@radix-ui/react-dialog";
 import { DialogFooter, DialogHeader } from "./ui/dialog";
 import { useAuth } from "./auth-provider";
+import { Spinner } from "./ui/spinner";
 
 const pastesFetcher = (url: string) =>
   apiFetch(url)
@@ -52,7 +41,7 @@ interface Paste {
 }
 
 export function DashboardContent() {
-  const {loggedIn, authLoading} = useAuth();
+  const { loggedIn, authLoading } = useAuth();
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
   const [toBeDeleted, setToBeDeleted] = useState<string | null>(null);
@@ -99,8 +88,9 @@ export function DashboardContent() {
 
   if (sessionLoading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+      <div className="border-border flex justify-center bg-card">
+        <Spinner className="size-10 justify-center" />
+        <p className="sr-only text-center text-foreground">Loading...</p>
       </div>
     );
   }

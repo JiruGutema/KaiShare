@@ -106,6 +106,7 @@ export async function HandleLogout() {
   }
 
   if (loggedOut) {
+    window.location.reload();
     return true;
   } else {
     return false;

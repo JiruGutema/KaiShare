@@ -20,6 +20,7 @@ import {
   Trash2,
   Delete,
   Link,
+  Loader,
 } from "lucide-react";
 import {
   Dialog,
@@ -37,6 +38,7 @@ import { HandleDelete } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
 import { LanguageExtensions } from "@/lib/languages";
 import { toast } from "sonner";
+import { Spinner } from "./ui/spinner";
 
 interface PasteViewerProps {
   id: string;
@@ -145,13 +147,10 @@ export function PasteViewer({ id }: PasteViewerProps) {
 
   if (isLoading) {
     return (
-      <Card className="border-border bg-card">
-        <CardContent className="py-12">
-          <div className="flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-none border-2 border-primary border-t-transparent" />
-          </div>
-        </CardContent>
-      </Card>
+      <div className="border-border flex justify-center bg-card">
+        <Spinner className="size-10 justify-center" />
+        <p className="sr-only text-center text-foreground">Loading...</p>
+      </div>
     );
   }
 
@@ -166,7 +165,7 @@ export function PasteViewer({ id }: PasteViewerProps) {
         }
       ).info
     : null;
-  console.log("error: ", errorInfo)
+  console.log("error: ", errorInfo);
 
   if (errorInfo?.requiresPassword) {
     return (
