@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <span className="text-sm">GoPastebin</span>
+            <span className="text-sm">KaiShare</span>
             <span className="text-xs">v1.0.0</span>
           </div>
           
