@@ -106,14 +106,16 @@ func GetMyPastes(userID uuid.UUID) (dto.MyPastesDTO, error) {
 	return myPastes, err
 }
 
-func UpdatePaste(paste dto.UpdatePasteDTO) error {
+func UpdatePaste(paste dto.UpdatePasteDTO) (*dto.PasteResponse, error) {
 	if paste.ID == uuid.Nil {
-		return errors.New("missing paste ID")
+		return nil, errors.New("missing paste ID")
 	}
 
 	fields := []string{}
 	args := []any{}
 	i := 1
+
+	fmt.Print(fields)
 
 	if paste.Title != nil {
 		fields = append(fields, fmt.Sprintf("title = $%d", i))
@@ -152,16 +154,45 @@ func UpdatePaste(paste dto.UpdatePasteDTO) error {
 	}
 
 	if len(fields) == 0 {
-		return errors.New("no fields to update")
+		return nil, errors.New("no fields to update")
 	}
 
+	// WHERE id
 	args = append(args, paste.ID)
-	query := fmt.Sprintf(
-		"UPDATE pastes SET %s WHERE id = $%d",
+
+	query := fmt.Sprintf(`
+		UPDATE pastes
+		SET %s
+		WHERE id = $%d
+		RETURNING
+			id,
+			title,
+			content,
+			language,
+			burn_after_read,
+			expires_at,
+			is_public,
+			created_at,
+	`,
 		strings.Join(fields, ", "),
 		i,
 	)
 
-	_, err := config.DB.Exec(query, args...)
-	return err
+	var res dto.PasteResponse
+
+	err := config.DB.QueryRow(query, args...).Scan(
+		&res.ID,
+		&res.Title,
+		&res.Content,
+		&res.Language,
+		&res.BurnAfterRead,
+		&res.ExpiresAt,
+		&res.IsPublic,
+		&res.CreatedAt,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return &res, nil
 }

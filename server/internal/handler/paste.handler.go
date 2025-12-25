@@ -41,6 +41,7 @@ func CreatePasteHandler(ctx *gin.Context) {
 }
 
 func GetPasteHandler(ctx *gin.Context) {
+	var Password dto.PasswordRequest
 	pasteID, err := uuid.Parse(ctx.Param("id"))
 	if err != nil {
 		ctx.JSON(400, gin.H{"error": "Error getting paste id"})
@@ -51,7 +52,9 @@ func GetPasteHandler(ctx *gin.Context) {
 
 	UID := userID.String()
 	PID := pasteID.String()
-	pastePassword := ctx.Query("password")
+	_ = ctx.BindJSON(&Password)
+	pastePassword := Password.Password
+	fmt.Println("pastePassword", pastePassword)
 	unlockedPaste, _ := ctx.Cookie(UID)
 
 	unlocked := false
@@ -79,6 +82,8 @@ func GetPasteHandler(ctx *gin.Context) {
 
 	if UID != "00000000-0000-0000-0000-000000000000" {
 		pkg.SetAuthCookie(ctx, UID, PID, domainHost, 900, true)
+	} else {
+		pkg.SetAuthCookie(ctx, UID, PID, domainHost, -1, true)
 	}
 	ctx.JSON(200, gin.H{"paste": paste})
 }
@@ -140,5 +145,48 @@ func DeletePasteHandler(ctx *gin.Context) {
 
 	ctx.JSON(200, gin.H{
 		"success": true,
+	})
+}
+
+func UpdatePasteHandler(ctx *gin.Context) {
+	var paste dto.UpdatePasteDTO
+	userID, err := pkg.GetUUIDFromGinContextParam(ctx, "userID")
+	pasteID, er := uuid.Parse(ctx.Param("id"))
+	if er != nil {
+
+		ctx.JSON(400, gin.H{
+			"error": "paste Id is required!",
+		})
+		return
+	}
+
+	if err != nil {
+		ctx.JSON(400, gin.H{
+			"error": "user Id is required!",
+		})
+		return
+	}
+	e := ctx.BindJSON(&paste)
+
+	if e != nil {
+
+		ctx.JSON(400, gin.H{
+			"error": "no paste information is provided",
+		})
+		return
+	}
+	paste.ID = pasteID
+	updatedPaste, err := service.UpdatePasteService(paste, userID)
+	if err != nil {
+
+		ctx.JSON(400, gin.H{
+			"error": "no paste information is provided",
+		})
+		return
+	}
+
+	ctx.JSON(200, gin.H{
+		"success": true,
+		"paste":   updatedPaste,
 	})
 }

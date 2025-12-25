@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -11,10 +12,12 @@ import (
 )
 
 var (
-	ErrUserNotExist    = errors.New("user does not exist")
-	ErrPasteExpired    = errors.New("paste has expired")
-	ErrCantDeletePaste = errors.New("unauthorized access to delete paste")
-	ErrWrongPassword   = errors.New("wrong password is provided for the paste")
+	ErrUserNotExist       = errors.New("user does not exist")
+	ErrPasteExpired       = errors.New("paste has expired")
+	ErrCantDeletePaste    = errors.New("unauthorized access to delete paste")
+	ErrWrongPassword      = errors.New("wrong password is provided for the paste")
+	ErrYouCantUpdatePaste = errors.New("you are not unauthorized to update the paste")
+	ErrPasteIDIsRequired  = errors.New("paste id is required")
 )
 
 func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
@@ -36,7 +39,7 @@ func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
 		}
 	}
 
-	if paste.Password != nil && *paste.Password != "" {
+	if paste.Password != nil && *paste.Password != ""  {
 		hashedPassword, err := pkg.HashPassword(*paste.Password)
 		if err != nil {
 			return uuid.Nil, err
@@ -46,6 +49,7 @@ func CreatePasteService(paste dto.PasteDTO) (uuid.UUID, error) {
 		paste.Password = nil
 	}
 	if err := repository.CreatePaste(paste); err != nil {
+		fmt.Print("here")
 		return uuid.Nil, err
 	}
 
@@ -115,6 +119,25 @@ func DeletePasteService(pasteID uuid.UUID, userID uuid.UUID) error {
 	return e
 }
 
-func UnlockPasteService(pasteID uuid.UUID, userID uuid.UUID, unlockedPasteID uuid.UUID) (dto.PasteDTO, error) {
-	return dto.PasteDTO{}, nil
+func UpdatePasteService(paste dto.UpdatePasteDTO, userID uuid.UUID) (dto.PasteResponse, error) {
+	empty := dto.PasteResponse{}
+
+	pasteID := paste.ID
+	if pasteID == uuid.Nil {
+		return empty, errors.New("paste id is required")
+	}
+
+	p, err := repository.GetPaste(pasteID)
+	if err != nil {
+		return empty, errors.New("paste id is required")
+	}
+
+	if p.UserID != nil && *p.UserID != userID {
+		return empty, errors.New(" id is required")
+	}
+	res, err := repository.UpdatePaste(paste)
+	if err != nil {
+		return empty, err
+	}
+	return *res, err
 }

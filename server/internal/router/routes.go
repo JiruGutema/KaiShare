@@ -19,7 +19,7 @@ var IsProd = os.Getenv("GO_ENV") == "production"
 func Routes() *gin.Engine {
 	router := gin.Default()
 	gin.SetMode(gin.ReleaseMode)
-	store := cookie.NewStore([]byte("secret")) 
+	store := cookie.NewStore([]byte("secret"))
 	if IsProd {
 		store.Options(sessions.Options{
 			Path:     "localhost",
@@ -33,7 +33,7 @@ func Routes() *gin.Engine {
 			Path:     "localhost",
 			MaxAge:   3600,
 			HttpOnly: true,
-			Secure:   false,               
+			Secure:   false,
 			SameSite: http.SameSiteLaxMode,
 		})
 	}
@@ -59,9 +59,10 @@ func Routes() *gin.Engine {
 
 	// Paste
 	router.POST("/api/paste", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)
-	router.GET("/api/paste/:id", middleware.InjectOptionalUserID(), handler.GetPasteHandler)
+	router.POST("/api/paste/:id", middleware.InjectOptionalUserID(), handler.GetPasteHandler)
 	router.GET("/api/paste/mine", middleware.AuthMiddleware(), handler.GetMyPastesHandler)
 	router.DELETE("/api/paste/:id", middleware.AuthMiddleware(), handler.DeletePasteHandler)
+	router.PUT("/api/paste/:id", middleware.AuthMiddleware(), handler.UpdatePasteHandler)
 
 	// User
 	router.DELETE("/api/users/me", middleware.AuthMiddleware(), handler.DeleteUserHandler)

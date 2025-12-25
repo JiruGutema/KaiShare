@@ -1,5 +1,4 @@
 **SIMPLE DATABASE SCHEMA FOR APPLICATION**
-
 ```sql
 
 -- users table

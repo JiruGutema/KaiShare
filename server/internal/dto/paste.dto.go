@@ -43,7 +43,11 @@ type UpdatePasteDTO struct {
 	ExpiresAt        *time.Time `json:"expiresAt"`
 	UserID           *uuid.UUID `json:"userId"`
 	IsPublic         *bool      `json:"isPublic"`
-	// RequiresPassword *bool      `json:"requiresPassword"`
 }
 
 type MyPastesDTO []PasteResponse
+
+type PasswordRequest struct {
+    Password string `json:"password"`
+}
+
