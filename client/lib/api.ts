@@ -25,9 +25,8 @@ export async function apiFetch(
   if (options.body) {
     fetchOptions.body = JSON.stringify(options.body);
   }
-  
-  let res = await fetch(url, fetchOptions);
 
+  let res = await fetch(url, fetchOptions);
   if (res.status === 401) {
     const data = await res
       .clone()

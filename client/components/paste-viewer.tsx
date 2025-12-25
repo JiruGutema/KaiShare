@@ -57,10 +57,10 @@ interface Paste {
 }
 
 const createFetcher = (password?: string) => async (url: string) => {
-  const finalString = password
-    ? url + "?password=" + password
-    : url + "?password=''";
-  const res = await apiFetch(finalString);
+  const res = await apiFetch(url, {
+    body: { password: password },
+    method: "POST",
+  });
   const data = await res.json();
   if (!res.ok) {
     const error = new Error(data.error || "Failed to fetch");
@@ -165,8 +165,6 @@ export function PasteViewer({ id }: PasteViewerProps) {
         }
       ).info
     : null;
-  console.log("error: ", errorInfo);
-
   if (errorInfo?.requiresPassword) {
     return (
       <Card className="border-border bg-card">

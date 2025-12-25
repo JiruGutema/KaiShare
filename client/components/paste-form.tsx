@@ -20,13 +20,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LANGUAGES, EXPIRATION_OPTIONS } from "@/lib/languages";
 import { Eye, EyeOff } from "lucide-react";
 import { apiFetch } from "@/lib/api";
-import { ApiBaseUrl, IsLoggedIn } from "@/lib/utils";
+import { ApiBaseUrl } from "@/lib/utils";
 import { toast } from "sonner";
 import { useAuth } from "./auth-provider";
 
 export function PasteForm() {
   const router = useRouter();
-  const {loggedIn, authLoading} = useAuth()
+  const {loggedIn} = useAuth()
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
