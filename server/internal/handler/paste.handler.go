@@ -23,10 +23,6 @@ func CreatePasteHandler(ctx *gin.Context) {
 		ctx.JSON(400, gin.H{"error": "Error creating paste"})
 		return
 	}
-	if pkg.ValidatePasteLength(paste.Content) {
-		ctx.JSON(404, gin.H{"error": "the content should less than 50,000 chars"})
-		return
-	}
 	pasteID, err := service.CreatePasteService(paste)
 	if errors.Is(err, service.ErrUserNotExist) {
 		ctx.JSON(404, gin.H{"error": "user associated with the paste doesn't exist"})
@@ -179,10 +175,6 @@ func UpdatePasteHandler(ctx *gin.Context) {
 		return
 	}
 
-	if paste.Content != nil && pkg.ValidatePasteLength(*paste.Content) {
-		ctx.JSON(404, gin.H{"error": "the content should less than 50,000 chars"})
-		return
-	}
 	paste.ID = pasteID
 	updatedPaste, err := service.UpdatePasteService(paste, userID)
 	if errors.Is(err, service.ErrYouCantUpdatePaste) {
