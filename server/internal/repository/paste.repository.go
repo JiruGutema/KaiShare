@@ -172,7 +172,7 @@ func UpdatePaste(paste dto.UpdatePasteDTO) (*dto.PasteResponse, error) {
 			burn_after_read,
 			expires_at,
 			is_public,
-			created_at,
+			created_at
 	`,
 		strings.Join(fields, ", "),
 		i,

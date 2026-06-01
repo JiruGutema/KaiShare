@@ -7,6 +7,16 @@ import useSWR from "swr";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { SyntaxHighlighter } from "@/components/syntax-highlighter";
 import {
@@ -21,6 +31,8 @@ import {
   Delete,
   Link,
   Loader,
+  Pencil,
+  X,
 } from "lucide-react";
 import {
   Dialog,
@@ -34,11 +46,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { formatDistanceToNow } from "date-fns";
-import { HandleDelete } from "@/lib/utils";
+import { HandleDelete, GetLocalUser, UpdatePaste } from "@/lib/utils";
 import { apiFetch } from "@/lib/api";
-import { LanguageExtensions } from "@/lib/languages";
+import { LanguageExtensions, LANGUAGES } from "@/lib/languages";
 import { toast } from "sonner";
 import { Spinner } from "./ui/spinner";
+import { useAuth } from "./auth-provider";
 
 interface PasteViewerProps {
   id: string;
@@ -54,6 +67,8 @@ interface Paste {
   expiresAt?: string;
   burned?: boolean;
   requiresPassword?: boolean;
+  isPublic?: boolean;
+  userId?: string | null;
 }
 
 const createFetcher = (password?: string) => async (url: string) => {
@@ -72,17 +87,28 @@ const createFetcher = (password?: string) => async (url: string) => {
 
 export function PasteViewer({ id }: PasteViewerProps) {
   const router = useRouter();
+  const { loggedIn } = useAuth();
   const [password, setPassword] = useState("");
   const [submittedPassword, setSubmittedPassword] = useState<string>();
   const [copied, setCopied] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [editData, setEditData] = useState({
+    title: "",
+    content: "",
+    language: "plaintext",
+    isPublic: false,
+    burnAfterRead: false,
+  });
 
   const {
     data: paste,
     error,
     isLoading,
+    mutate,
   } = useSWR(
     [`/api/paste/${id}`, submittedPassword],
     ([url, pwd]) => createFetcher(pwd)(url),
@@ -91,6 +117,54 @@ export function PasteViewer({ id }: PasteViewerProps) {
       shouldRetryOnError: false,
     },
   );
+
+  const localUser = GetLocalUser();
+  const isOwner = Boolean(
+    loggedIn && paste?.userId && localUser?.user?.id === paste.userId,
+  );
+
+  const startEditing = () => {
+    if (!paste) return;
+    setEditData({
+      title: paste.title || "",
+      content: paste.content,
+      language: paste.language,
+      isPublic: Boolean(paste.isPublic),
+      burnAfterRead: Boolean(paste.burnAfterRead),
+    });
+    setEditing(true);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editData.content.trim()) {
+      toast.error("Content cannot be empty.");
+      return;
+    }
+    setSaving(true);
+    try {
+      const { ok, status, data } = await UpdatePaste(id, {
+        title: editData.title,
+        content: editData.content,
+        language: editData.language,
+        isPublic: editData.isPublic,
+        burnAfterRead: editData.burnAfterRead,
+      });
+
+      if (ok) {
+        mutate({ ...paste, ...(data?.paste ?? {}) }, { revalidate: false });
+        toast.success("Paste updated successfully!");
+        setEditing(false);
+      } else if (status === 401) {
+        toast.error("You are not authorized to edit this paste.");
+      } else {
+        toast.error("Failed to update paste. Please try again.");
+      }
+    } catch {
+      toast.error("Failed to update paste. Please try again.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -233,10 +307,21 @@ export function PasteViewer({ id }: PasteViewerProps) {
       <Card className="border-border bg-card">
         <CardHeader className="border-b border-border pb-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <CardTitle className="text-xl font-bold text-foreground">
-                {paste.title || "Untitled"}
-              </CardTitle>
+            <div className="flex-1">
+              {editing ? (
+                <Input
+                  value={editData.title}
+                  placeholder="Untitled"
+                  onChange={(e) =>
+                    setEditData({ ...editData, title: e.target.value })
+                  }
+                  className="bg-secondary border-border text-xl font-bold"
+                />
+              ) : (
+                <CardTitle className="text-xl font-bold text-foreground">
+                  {paste.title || "Untitled"}
+                </CardTitle>
+              )}
               <div className="flex flex-wrap items-center gap-2 mt-2 text-sm text-muted-foreground">
                 <Badge variant="outline">{paste.language}</Badge>
                 <span className="flex items-center gap-1">
@@ -283,6 +368,12 @@ export function PasteViewer({ id }: PasteViewerProps) {
                 <Download className="h-4 w-4" />
                 <span className="ml-1 hidden sm:inline">Download</span>
               </Button>
+              {isOwner && !editing && (
+                <Button variant="outline" size="sm" onClick={startEditing}>
+                  <Pencil className="h-4 w-4" />
+                  <span className="ml-1 hidden sm:inline">Edit</span>
+                </Button>
+              )}
               <Button
                 variant="outline"
                 size="sm"
@@ -297,23 +388,110 @@ export function PasteViewer({ id }: PasteViewerProps) {
             </div>
           </div>
         </CardHeader>
-        <CardContent className="p-0">
-          <div className="flex">
-            <div className="shrink-0 select-none border-r border-border bg-secondary/50 px-3 py-4 text-right font-mono text-xs text-muted-foreground">
-              {lines.map((_: string, i: number) => (
-                <div key={i} className="leading-6">
-                  {i + 1}
-                </div>
-              ))}
+        {editing ? (
+          <CardContent className="space-y-4 pt-4">
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="w-full sm:w-48">
+                <Label className="text-muted-foreground text-sm">Syntax</Label>
+                <Select
+                  value={editData.language}
+                  onValueChange={(value) =>
+                    setEditData({ ...editData, language: value })
+                  }
+                >
+                  <SelectTrigger className="mt-1.5 bg-secondary border-border">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {LANGUAGES.map((lang) => (
+                      <SelectItem key={lang.value} value={lang.value}>
+                        {lang.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-            <div className="flex-1 overflow-x-auto p-4 font-mono text-sm">
-              <SyntaxHighlighter
-                code={paste.content}
-                language={paste.language}
+            <div>
+              <Label className="text-muted-foreground text-sm">Content</Label>
+              <Textarea
+                value={editData.content}
+                onChange={(e) =>
+                  setEditData({ ...editData, content: e.target.value })
+                }
+                className="mt-1.5 min-h-[300px] resize-y border-border bg-secondary font-mono text-sm"
               />
             </div>
-          </div>
-        </CardContent>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="flex items-center justify-between rounded-none border border-border bg-secondary p-3">
+                <div>
+                  <p className="text-sm font-medium text-foreground">
+                    Burn After Read
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Delete after first view
+                  </p>
+                </div>
+                <Switch
+                  checked={editData.burnAfterRead}
+                  onCheckedChange={(checked) =>
+                    setEditData({ ...editData, burnAfterRead: checked })
+                  }
+                />
+              </div>
+              <div className="flex items-center justify-between rounded-none border border-border bg-secondary p-3">
+                <div>
+                  <p className="text-sm font-medium text-foreground">
+                    Public Paste
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Visible in public search result
+                  </p>
+                </div>
+                <Switch
+                  checked={editData.isPublic}
+                  onCheckedChange={(checked) =>
+                    setEditData({ ...editData, isPublic: checked })
+                  }
+                />
+              </div>
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setEditing(false)}
+                disabled={saving}
+              >
+                <X className="h-4 w-4" />
+                <span className="ml-1">Cancel</span>
+              </Button>
+              <Button
+                onClick={handleSaveEdit}
+                disabled={saving || !editData.content.trim()}
+              >
+                {saving ? "Saving..." : "Save Changes"}
+              </Button>
+            </div>
+          </CardContent>
+        ) : (
+          <CardContent className="p-0">
+            <div className="flex">
+              <div className="shrink-0 select-none border-r border-border bg-secondary/50 px-3 py-4 text-right font-mono text-xs text-muted-foreground">
+                {lines.map((_: string, i: number) => (
+                  <div key={i} className="leading-6">
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+              <div className="flex-1 overflow-x-auto p-4 font-mono text-sm">
+                <SyntaxHighlighter
+                  code={paste.content}
+                  language={paste.language}
+                />
+              </div>
+            </div>
+          </CardContent>
+        )}
       </Card>
       <Dialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
         <DialogTrigger asChild></DialogTrigger>

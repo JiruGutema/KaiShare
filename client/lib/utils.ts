@@ -23,6 +23,23 @@ export async function HandleDelete(id: string) {
   }
 }
 
+export interface UpdatePastePayload {
+  title?: string;
+  content?: string;
+  language?: string;
+  isPublic?: boolean;
+  burnAfterRead?: boolean;
+}
+
+export async function UpdatePaste(id: string, payload: UpdatePastePayload) {
+  const res = await apiFetch(`${ApiBaseUrl()}/api/paste/${id}`, {
+    method: "PUT",
+    body: payload,
+  });
+  const data = await res.json().catch(() => null);
+  return { ok: res.ok, status: res.status, data };
+}
+
 export const Logger = {
   log: (...inputs: any[]) => {
     if (isDevelopment) {

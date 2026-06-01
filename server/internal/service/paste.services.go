@@ -129,11 +129,11 @@ func UpdatePasteService(paste dto.UpdatePasteDTO, userID uuid.UUID) (dto.PasteRe
 
 	p, err := repository.GetPaste(pasteID)
 	if err != nil {
-		return empty, errors.New("paste id is required")
+		return empty, ErrPasteIDIsRequired
 	}
 
-	if p.UserID != nil && *p.UserID != userID {
-		return empty, errors.New(" id is required")
+	if p.UserID == nil || *p.UserID != userID {
+		return empty, ErrYouCantUpdatePaste
 	}
 	res, err := repository.UpdatePaste(paste)
 	if err != nil {

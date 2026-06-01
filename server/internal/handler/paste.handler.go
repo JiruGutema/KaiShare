@@ -179,12 +179,18 @@ func UpdatePasteHandler(ctx *gin.Context) {
 		return
 	}
 
-	if pkg.ValidatePasteLength(*paste.Content) {
+	if paste.Content != nil && pkg.ValidatePasteLength(*paste.Content) {
 		ctx.JSON(404, gin.H{"error": "the content should less than 50,000 chars"})
 		return
 	}
 	paste.ID = pasteID
 	updatedPaste, err := service.UpdatePasteService(paste, userID)
+	if errors.Is(err, service.ErrYouCantUpdatePaste) {
+		ctx.JSON(401, gin.H{
+			"error": "unauthorized access",
+		})
+		return
+	}
 	if err != nil {
 
 		ctx.JSON(400, gin.H{
