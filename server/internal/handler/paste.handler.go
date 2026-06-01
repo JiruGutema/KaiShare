@@ -2,7 +2,6 @@ package handler
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -51,14 +50,12 @@ func GetPasteHandler(ctx *gin.Context) {
 
 	UID := userID.String()
 	PID := pasteID.String()
-	_ = ctx.BindJSON(&Password)
+	_ = ctx.ShouldBindJSON(&Password)
 	pastePassword := Password.Password
-	fmt.Println("pastePassword", pastePassword)
 	unlockedPaste, _ := ctx.Cookie(UID)
 
 	unlocked := false
 	unlocked = unlockedPaste == pasteID.String() && UID != "00000000-0000-0000-0000-000000000000"
-	fmt.Println("unlocked", unlocked)
 
 	paste, err := service.GetPasteService(pasteID, pastePassword, unlocked)
 	if errors.Is(err, service.ErrPasteExpired) {
@@ -70,12 +67,10 @@ func GetPasteHandler(ctx *gin.Context) {
 		if errors.Is(err, service.ErrWrongPassword) {
 
 			ctx.JSON(400, gin.H{"error": "wrong password is provided for the paste", "paste": paste})
-			fmt.Println(err)
 			return
 		}
 
 		ctx.JSON(400, gin.H{"error": "Error retrieving paste"})
-		fmt.Println(err)
 		return
 	}
 

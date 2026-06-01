@@ -88,6 +88,7 @@ func Routes() *gin.Engine {
 	{
 		paste.POST("", middleware.InjectOptionalUserID(), handler.CreatePasteHandler)
 		paste.GET("/:id", middleware.InjectOptionalUserID(), handler.GetPasteHandler)
+		paste.POST("/:id", middleware.InjectOptionalUserID(), handler.GetPasteHandler)
 		paste.GET("/mine", middleware.AuthMiddleware(), handler.GetMyPastesHandler)
 		paste.DELETE("/:id", middleware.AuthMiddleware(), handler.DeletePasteHandler)
 		paste.PUT("/:id", middleware.AuthMiddleware(), handler.UpdatePasteHandler)
